@@ -45,7 +45,17 @@
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell setAccessoryType:(item.isFinished) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone];
     [cell.textLabel setText:item.name];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:NSLocalizedString(@"priority %d", nil),item.priority]];
+    
+    NSMutableArray *categories = [NSMutableArray arrayWithCapacity:0];
+    
+    for (Category *category in [MEDataManager sharedManager].categories) {
+        if ([category.todoItems containsObject:item])
+            [categories addObject:category];
+    }
+    
+    NSString *categoryString = [[categories valueForKey:@"name"] componentsJoinedByString:@", "];
+    
+    [cell.detailTextLabel setText:[NSString stringWithFormat:NSLocalizedString(@"priority %d - categories (%@)", nil),item.priority,(categoryString.length == 0) ? NSLocalizedString(@"None", nil) : categoryString]];
     
     return cell;
 }
@@ -53,7 +63,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.todoList.mutableTodoItems removeObjectAtIndex:indexPath.row];
         
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
@@ -82,7 +92,7 @@
     
     [self.todoList.mutableTodoItems addObject:item];
     
-    [self.tableView reloadData];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

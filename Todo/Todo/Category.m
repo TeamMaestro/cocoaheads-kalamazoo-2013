@@ -10,6 +10,15 @@
 
 @implementation Category
 
+- (id)init {
+    if (!(self = [super init]))
+        return nil;
+    
+    [self setMutableTodoItems:[NSMutableSet setWithCapacity:0]];
+    
+    return self;
+}
+
 @dynamic todoItems;
 - (NSSet *)todoItems {
     return [self.mutableTodoItems copy];

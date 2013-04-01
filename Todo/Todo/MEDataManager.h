@@ -13,6 +13,8 @@
 @property (readonly,nonatomic) NSArray *todoLists;
 @property (readonly,strong,nonatomic) NSMutableArray *mutableTodoLists;
 
+@property (readonly,nonatomic) NSSet *categories;
+
 + (MEDataManager *)sharedManager;
 
 @end

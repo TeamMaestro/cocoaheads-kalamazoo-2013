@@ -57,7 +57,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [[MEDataManager sharedManager].mutableTodoLists removeObjectAtIndex:indexPath.row];
         
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 

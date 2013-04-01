@@ -13,6 +13,7 @@
 
 @interface MEDataManager ()
 @property (readwrite,strong,nonatomic) NSMutableArray *mutableTodoLists;
+@property (strong,nonatomic) NSMutableSet *mutableCategories;
 @end
 
 @implementation MEDataManager
@@ -22,12 +23,21 @@
         return nil;
     
     [self setMutableTodoLists:[NSMutableArray arrayWithCapacity:0]];
+    [self setMutableCategories:[NSMutableSet setWithCapacity:0]];
     
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"TodoLists.plist" withExtension:nil];
     NSData *data = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:NULL];
-    NSArray *temp = [NSPropertyListSerialization propertyListWithData:data options:0 format:NULL error:NULL];
+    NSDictionary *temp = [NSPropertyListSerialization propertyListWithData:data options:0 format:NULL error:NULL];
     
-    for (NSDictionary *listDict in temp) {
+    for (NSDictionary *categoryDict in temp[@"categories"]) {
+        Category *category = [[Category alloc] init];
+        
+        [category setName:categoryDict[@"name"]];
+        
+        [self.mutableCategories addObject:category];
+    }
+    
+    for (NSDictionary *listDict in temp[@"lists"]) {
         TodoList *list = [[TodoList alloc] init];
         
         [list setName:listDict[@"name"]];
@@ -40,6 +50,11 @@
             [item setFinished:[itemDict[@"finished"] boolValue]];
             
             [list.mutableTodoItems addObject:item];
+            
+            if (item.isFinished) {
+                for (Category *category in self.categories)
+                    [category.mutableTodoItems addObject:item];
+            }
         }
         
         [self.mutableTodoLists addObject:list];
@@ -59,6 +74,9 @@
 
 - (NSArray *)todoLists {
     return [self.mutableTodoLists copy];
+}
+- (NSSet *)categories {
+    return [self.mutableCategories copy];
 }
 
 @end
