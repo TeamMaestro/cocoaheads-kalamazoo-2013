@@ -1,0 +1,88 @@
+//
+//  METodoItemViewController.m
+//  Todo
+//
+//  Created by William Towe on 3/31/13.
+//  Copyright (c) 2013 William Towe. All rights reserved.
+//
+
+#import "METodoItemViewController.h"
+#import "METableViewCell.h"
+#import "MEDataManager.h"
+#import "TodoList.h"
+#import "TodoItem.h"
+#import "Category.h"
+
+@interface METodoItemViewController ()
+@property (strong,nonatomic) TodoList *todoList;
+@end
+
+@implementation METodoItemViewController
+
+- (NSString *)title {
+    return self.todoList.name;
+}
+- (UINavigationItem *)navigationItem {
+    UINavigationItem *retval = [super navigationItem];
+    
+    [retval setRightBarButtonItems:@[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(_addItemAction:)],self.editButtonItem] animated:NO];
+    
+    return retval;
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.tableView registerClass:[METableViewCell class] forCellReuseIdentifier:[METableViewCell reuseIdentifier]];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.todoList.todoItems.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    METableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[METableViewCell reuseIdentifier] forIndexPath:indexPath];
+    TodoItem *item = [self.todoList.todoItems objectAtIndex:indexPath.row];
+    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell setAccessoryType:(item.isFinished) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone];
+    [cell.textLabel setText:item.name];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:NSLocalizedString(@"priority %d", nil),item.priority]];
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.todoList.mutableTodoItems removeObjectAtIndex:indexPath.row];
+        
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [self.todoList.mutableTodoItems exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TodoItem *item = [self.todoList.todoItems objectAtIndex:indexPath.row];
+    
+    [item setFinished:!item.isFinished];
+    
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (id)initWithTodoList:(TodoList *)todoList; {
+    if (!(self = [super init]))
+        return nil;
+    
+    [self setTodoList:todoList];
+    
+    return self;
+}
+
+- (IBAction)_addItemAction:(id)sender {
+    TodoItem *item = [[TodoItem alloc] init];
+    
+    [self.todoList.mutableTodoItems addObject:item];
+    
+    [self.tableView reloadData];
+}
+
+@end

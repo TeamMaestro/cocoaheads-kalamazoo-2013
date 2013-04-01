@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>List 1</string>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Item 1</string>
+				<key>priority</key>
+				<integer>1000</integer>
+				<key>finished</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Item 2</string>
+				<key>priority</key>
+				<integer>500</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Item 3</string>
+				<key>priority</key>
+				<integer>-1</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Item 4</string>
+				<key>priority</key>
+				<integer>100</integer>
+				<key>finished</key>
+				<string>YES</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>List 2</string>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Item 3</string>
+				<key>priority</key>
+				<integer>-1</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Item 4</string>
+				<key>priority</key>
+				<integer>100</integer>
+				<key>finished</key>
+				<string>YES</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>
