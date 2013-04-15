@@ -10,6 +10,7 @@
 
 @interface TodoItem : NSObject
 
+@property (assign,nonatomic) int32_t order;
 @property (strong,nonatomic) NSString *name;
 @property (assign,nonatomic) int32_t priority;
 @property (strong,nonatomic) NSString *notes;

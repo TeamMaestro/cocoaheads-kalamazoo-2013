@@ -10,6 +10,7 @@
 
 @interface TodoList : NSObject
 
+@property (assign,nonatomic) int32_t order;
 @property (strong,nonatomic) NSString *name;
 
 @property (strong,nonatomic) NSArray *todoItems;

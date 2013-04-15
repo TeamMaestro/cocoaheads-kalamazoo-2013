@@ -15,7 +15,9 @@
     if (!(self = [super init]))
         return nil;
     
-    [self setName:NSLocalizedString(@"Untitled List", nil)];
+    static NSInteger kCounter = 1;
+    
+    [self setName:[NSString stringWithFormat:NSLocalizedString(@"Untitled List %d", nil),kCounter++]];
     [self setMutableTodoItems:[NSMutableArray arrayWithCapacity:0]];
     
     return self;
