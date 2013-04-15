@@ -14,6 +14,8 @@
     if (!(self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier]))
         return nil;
     
+    [self setShowsReorderControl:YES];
+    
     return self;
 }
 
