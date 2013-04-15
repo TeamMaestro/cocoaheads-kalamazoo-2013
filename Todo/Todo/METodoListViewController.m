@@ -60,6 +60,13 @@
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [[MEDataManager sharedManager].mutableTodoLists exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+    
+    [[MEDataManager sharedManager].todoLists enumerateObjectsUsingBlock:^(TodoList *list, NSUInteger idx, BOOL *stop) {
+        [list setOrder:idx];
+    }];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     METodoItemViewController *viewController = [[METodoItemViewController alloc] initWithTodoList:[[MEDataManager sharedManager].todoLists objectAtIndex:indexPath.row]];
@@ -68,11 +75,9 @@
 }
 
 - (IBAction)_addItemAction:(id)sender {
-    TodoList *list = [[TodoList alloc] init];
+    [[MEDataManager sharedManager].mutableTodoLists addObject:[[TodoList alloc] init]];
     
-    [[MEDataManager sharedManager].mutableTodoLists addObject:list];
-    
-    [self.tableView reloadData];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "METodoItemViewController.h"
 #import "METableViewCell.h"
+#import "METableViewHeaderFooterView.h"
 #import "MEDataManager.h"
 #import "TodoList.h"
 #import "TodoItem.h"
@@ -32,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[METableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:[METableViewHeaderFooterView reuseIdentifier]];
     [self.tableView registerClass:[METableViewCell class] forCellReuseIdentifier:[METableViewCell reuseIdentifier]];
 }
 
@@ -59,6 +61,19 @@
     
     return cell;
 }
+
+static const CGFloat kHeaderHeight = 44;
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return kHeaderHeight;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    METableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:[METableViewHeaderFooterView reuseIdentifier]];
+    
+    [view.textLabel setText:[NSString stringWithFormat:NSLocalizedString(@"%@ - %u item(s), (%u completed)", nil),self.todoList.name,self.todoList.todoItems.count,self.todoList.finishedTodoItems.count]];
+    
+    return view;
+}
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.todoList.mutableTodoItems removeObjectAtIndex:indexPath.row];
@@ -68,8 +83,15 @@
 }
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     [self.todoList.mutableTodoItems exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+    
+    [self.todoList.todoItems enumerateObjectsUsingBlock:^(TodoItem *item, NSUInteger idx, BOOL *stop) {
+        [item setOrder:idx];
+    }];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NSLocalizedString(@"Remove", nil);
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TodoItem *item = [self.todoList.todoItems objectAtIndex:indexPath.row];
     
