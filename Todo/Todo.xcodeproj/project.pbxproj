@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79286B01171C51AD004EF2CC /* METableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79286B00171C51AC004EF2CC /* METableViewHeaderFooterView.m */; };
 		79742103170921670089E2E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79742102170921670089E2E5 /* UIKit.framework */; };
 		79742105170921670089E2E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79742104170921670089E2E5 /* Foundation.framework */; };
 		79742107170921670089E2E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79742106170921670089E2E5 /* CoreGraphics.framework */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		79286AFF171C51AC004EF2CC /* METableViewHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METableViewHeaderFooterView.h; sourceTree = "<group>"; };
+		79286B00171C51AC004EF2CC /* METableViewHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METableViewHeaderFooterView.m; sourceTree = "<group>"; };
 		797420FF170921670089E2E5 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79742102170921670089E2E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79742104170921670089E2E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -154,6 +157,8 @@
 			children = (
 				79742130170923980089E2E5 /* METableViewCell.h */,
 				79742131170923980089E2E5 /* METableViewCell.m */,
+				79286AFF171C51AC004EF2CC /* METableViewHeaderFooterView.h */,
+				79286B00171C51AC004EF2CC /* METableViewHeaderFooterView.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				797421451709270F0089E2E5 /* Category.m in Sources */,
 				79742148170927C00089E2E5 /* MEDataManager.m in Sources */,
 				7974214D17092E7B0089E2E5 /* METodoItemViewController.m in Sources */,
+				79286B01171C51AD004EF2CC /* METableViewHeaderFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +371,7 @@
 				79742127170921670089E2E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
