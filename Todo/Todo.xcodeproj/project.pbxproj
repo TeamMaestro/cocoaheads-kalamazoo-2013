@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		79286B01171C51AD004EF2CC /* METableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79286B00171C51AC004EF2CC /* METableViewHeaderFooterView.m */; };
+		79574C9F173D65710080AE1C /* METodoItemTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79574C9E173D65710080AE1C /* METodoItemTableHeaderView.m */; };
+		79574CA2173D65E30080AE1C /* METodoItemTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79574CA1173D65E30080AE1C /* METodoItemTableFooterView.m */; };
 		79742103170921670089E2E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79742102170921670089E2E5 /* UIKit.framework */; };
 		79742105170921670089E2E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79742104170921670089E2E5 /* Foundation.framework */; };
 		79742107170921670089E2E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79742106170921670089E2E5 /* CoreGraphics.framework */; };
@@ -32,6 +34,10 @@
 /* Begin PBXFileReference section */
 		79286AFF171C51AC004EF2CC /* METableViewHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METableViewHeaderFooterView.h; sourceTree = "<group>"; };
 		79286B00171C51AC004EF2CC /* METableViewHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METableViewHeaderFooterView.m; sourceTree = "<group>"; };
+		79574C9D173D65710080AE1C /* METodoItemTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METodoItemTableHeaderView.h; sourceTree = "<group>"; };
+		79574C9E173D65710080AE1C /* METodoItemTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METodoItemTableHeaderView.m; sourceTree = "<group>"; };
+		79574CA0173D65E30080AE1C /* METodoItemTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METodoItemTableFooterView.h; sourceTree = "<group>"; };
+		79574CA1173D65E30080AE1C /* METodoItemTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METodoItemTableFooterView.m; sourceTree = "<group>"; };
 		797420FF170921670089E2E5 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79742102170921670089E2E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79742104170921670089E2E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -159,6 +165,10 @@
 				79742131170923980089E2E5 /* METableViewCell.m */,
 				79286AFF171C51AC004EF2CC /* METableViewHeaderFooterView.h */,
 				79286B00171C51AC004EF2CC /* METableViewHeaderFooterView.m */,
+				79574C9D173D65710080AE1C /* METodoItemTableHeaderView.h */,
+				79574C9E173D65710080AE1C /* METodoItemTableHeaderView.m */,
+				79574CA0173D65E30080AE1C /* METodoItemTableFooterView.h */,
+				79574CA1173D65E30080AE1C /* METodoItemTableFooterView.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -255,6 +265,8 @@
 				79742148170927C00089E2E5 /* MEDataManager.m in Sources */,
 				7974214D17092E7B0089E2E5 /* METodoItemViewController.m in Sources */,
 				79286B01171C51AD004EF2CC /* METableViewHeaderFooterView.m in Sources */,
+				79574C9F173D65710080AE1C /* METodoItemTableHeaderView.m in Sources */,
+				79574CA2173D65E30080AE1C /* METodoItemTableFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

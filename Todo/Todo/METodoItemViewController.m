@@ -8,7 +8,8 @@
 
 #import "METodoItemViewController.h"
 #import "METableViewCell.h"
-#import "METableViewHeaderFooterView.h"
+#import "METodoItemTableHeaderView.h"
+#import "METodoItemTableFooterView.h"
 #import "MEDataManager.h"
 #import "TodoList.h"
 #import "TodoItem.h"
@@ -33,7 +34,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[METableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:[METableViewHeaderFooterView reuseIdentifier]];
+    METodoItemTableHeaderView *headerView = [[METodoItemTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, 0, 88)];
+    
+    [headerView.contentView setBackgroundColor:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:0.75]];
+    
+    [self.tableView setTableHeaderView:headerView];
+    
+    METodoItemTableFooterView *footerView = [[METodoItemTableFooterView alloc] initWithFrame:CGRectMake(0, 0, 0, 88)];
+    
+    [footerView.contentView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0.5 alpha:0.75]];
+    
+    [self.tableView setTableFooterView:footerView];
+    
+    [self.tableView registerClass:[METodoItemTableHeaderView class] forHeaderFooterViewReuseIdentifier:[METodoItemTableHeaderView reuseIdentifier]];
+    [self.tableView registerClass:[METodoItemTableFooterView class] forHeaderFooterViewReuseIdentifier:[METodoItemTableFooterView reuseIdentifier]];
     [self.tableView registerClass:[METableViewCell class] forCellReuseIdentifier:[METableViewCell reuseIdentifier]];
 }
 
@@ -68,9 +82,22 @@ static const CGFloat kHeaderHeight = 44;
     return kHeaderHeight;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    METableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:[METableViewHeaderFooterView reuseIdentifier]];
+    METodoItemTableHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:[METodoItemTableHeaderView reuseIdentifier]];
     
     [view.textLabel setText:[NSString stringWithFormat:NSLocalizedString(@"%@ - %u item(s), (%u completed)", nil),self.todoList.name,self.todoList.todoItems.count,self.todoList.finishedTodoItems.count]];
+    
+    return view;
+}
+
+static const CGFloat kFooterHeight = 44;
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return kFooterHeight;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    METodoItemTableFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:[METodoItemTableFooterView reuseIdentifier]];
+    
+    [view.textLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Footer view for section %d", nil),section]];
     
     return view;
 }
