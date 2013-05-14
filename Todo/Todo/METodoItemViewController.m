@@ -34,15 +34,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    METodoItemTableHeaderView *headerView = [[METodoItemTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, 0, 88)];
+    UILabel *headerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
     
-    [headerView.contentView setBackgroundColor:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:0.75]];
+    [headerView setBackgroundColor:[UIColor colorWithRed:0.5 green:0 blue:0 alpha:0.75]];
+    [headerView setText:NSLocalizedString(@"Table Header View", nil)];
     
     [self.tableView setTableHeaderView:headerView];
     
-    METodoItemTableFooterView *footerView = [[METodoItemTableFooterView alloc] initWithFrame:CGRectMake(0, 0, 0, 88)];
+    UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
     
-    [footerView.contentView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0.5 alpha:0.75]];
+    [footerView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0.5 alpha:0.75]];
+    [footerView setText:NSLocalizedString(@"Table Footer View", nil)];
     
     [self.tableView setTableFooterView:footerView];
     
@@ -84,7 +86,9 @@ static const CGFloat kHeaderHeight = 44;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     METodoItemTableHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:[METodoItemTableHeaderView reuseIdentifier]];
     
-    [view.textLabel setText:[NSString stringWithFormat:NSLocalizedString(@"%@ - %u item(s), (%u completed)", nil),self.todoList.name,self.todoList.todoItems.count,self.todoList.finishedTodoItems.count]];
+//    [view.textLabel setText:[NSString stringWithFormat:NSLocalizedString(@"%@ - %u item(s), (%u completed)", nil),self.todoList.name,self.todoList.todoItems.count,self.todoList.finishedTodoItems.count]];
+    
+    [view.textLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Section %d Header", nil),section]];
     
     return view;
 }
@@ -97,7 +101,7 @@ static const CGFloat kFooterHeight = 44;
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     METodoItemTableFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:[METodoItemTableFooterView reuseIdentifier]];
     
-    [view.textLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Footer view for section %d", nil),section]];
+    [view.textLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Section %d Footer", nil),section]];
     
     return view;
 }
