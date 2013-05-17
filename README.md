@@ -1,4 +1,4 @@
-kzoo-cocoaheads-2013
+CocoaHeads Kalamazoo
 ====================
 
-Private repository for the Maestro-run CocoaHeads code and presentation notes
+Presentation repository for CocoaHeads Kalamazoo code samples and Keynote slide decks.
