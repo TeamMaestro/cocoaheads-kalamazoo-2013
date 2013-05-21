@@ -29,6 +29,8 @@
 		79742148170927C00089E2E5 /* MEDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79742147170927BF0089E2E5 /* MEDataManager.m */; };
 		7974214A17092B7F0089E2E5 /* TodoLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7974214917092B7F0089E2E5 /* TodoLists.plist */; };
 		7974214D17092E7B0089E2E5 /* METodoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7974214C17092E7B0089E2E5 /* METodoItemViewController.m */; };
+		9CCC0D96174AF15000F6027D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCC0D95174AF15000F6027D /* CoreData.framework */; };
+		9CCC0D99174AF19C00F6027D /* TodoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC0D97174AF19C00F6027D /* TodoModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		7974214917092B7F0089E2E5 /* TodoLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TodoLists.plist; sourceTree = "<group>"; };
 		7974214B17092E7B0089E2E5 /* METodoItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METodoItemViewController.h; sourceTree = "<group>"; };
 		7974214C17092E7B0089E2E5 /* METodoItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METodoItemViewController.m; sourceTree = "<group>"; };
+		9CCC0D95174AF15000F6027D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9CCC0D98174AF19C00F6027D /* TodoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CCC0D96174AF15000F6027D /* CoreData.framework in Frameworks */,
 				79742103170921670089E2E5 /* UIKit.framework in Frameworks */,
 				79742105170921670089E2E5 /* Foundation.framework in Frameworks */,
 				79742107170921670089E2E5 /* CoreGraphics.framework in Frameworks */,
@@ -106,6 +111,7 @@
 		79742101170921670089E2E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CCC0D95174AF15000F6027D /* CoreData.framework */,
 				79742102170921670089E2E5 /* UIKit.framework */,
 				79742104170921670089E2E5 /* Foundation.framework */,
 				79742106170921670089E2E5 /* CoreGraphics.framework */,
@@ -182,6 +188,7 @@
 				79742141170926520089E2E5 /* TodoItem.m */,
 				797421431709270F0089E2E5 /* Category.h */,
 				797421441709270F0089E2E5 /* Category.m */,
+				9CCC0D97174AF19C00F6027D /* TodoModel.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 				79286B01171C51AD004EF2CC /* METableViewHeaderFooterView.m in Sources */,
 				79574C9F173D65710080AE1C /* METodoItemTableHeaderView.m in Sources */,
 				79574CA2173D65E30080AE1C /* METodoItemTableFooterView.m in Sources */,
+				9CCC0D99174AF19C00F6027D /* TodoModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +394,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9CCC0D97174AF19C00F6027D /* TodoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9CCC0D98174AF19C00F6027D /* TodoModel.xcdatamodel */,
+			);
+			currentVersion = 9CCC0D98174AF19C00F6027D /* TodoModel.xcdatamodel */;
+			path = TodoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 797420F7170921670089E2E5 /* Project object */;
 }
