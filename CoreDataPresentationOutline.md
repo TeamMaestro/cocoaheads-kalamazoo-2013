@@ -35,7 +35,14 @@ Core Data Presentation Outline
 3. Setting up Core Data In Your Project
    - Include the correct frameworks (CoreData)
    - Creating a data model using the data model editor in Xcode
+	 - Importance of setting an inverse (how this differs from a relational database)
 	 - Go over entities and various UI model editor stuff
+	 - Transient properties
+	 - Index
+	 - Relationship properties
+	   - 1-1
+	   - to-many
+	   - deletion rules
    - Loading the MOM
    - Setting up the PSC
    - Creating a MOC
