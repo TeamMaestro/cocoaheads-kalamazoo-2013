@@ -1,19 +1,25 @@
 //
-//  TodoItem.h
+//  ToDoItem.h
 //  Todo
 //
-//  Created by William Towe on 3/31/13.
+//  Created by Norm Barnard on 5/20/13.
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface TodoItem : NSObject
+@class ToDoList;
 
-@property (assign,nonatomic) int32_t order;
-@property (strong,nonatomic) NSString *name;
-@property (assign,nonatomic) int32_t priority;
-@property (strong,nonatomic) NSString *notes;
-@property (assign,nonatomic,getter = isFinished) BOOL finished;
+@interface ToDoItem : NSManagedObject
+
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic) int32_t order;
+@property (nonatomic) int16_t priority;
+@property (nonatomic, strong) NSString * notes;
+@property (nonatomic) BOOL isFinished;
+@property (nonatomic, strong) ToDoList *list;
+
++ (ToDoItem *)createNewItemInContext:(NSManagedObjectContext *)moc;
 
 @end

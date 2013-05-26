@@ -1,21 +1,35 @@
 //
-//  TodoList.h
+//  ToDoList.h
 //  Todo
 //
-//  Created by William Towe on 3/31/13.
+//  Created by Norm Barnard on 5/20/13.
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface TodoList : NSObject
+@class Category, ToDoItem;
 
-@property (assign,nonatomic) int32_t order;
-@property (strong,nonatomic) NSString *name;
+@interface ToDoList : NSManagedObject
 
-@property (strong,nonatomic) NSArray *todoItems;
-@property (strong,nonatomic) NSMutableArray *mutableTodoItems;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic) int32_t order;
+@property (nonatomic, strong) NSSet *items;
+@property (nonatomic, strong) Category *category;
 
-@property (readonly,nonatomic) NSArray *finishedTodoItems;
++ (NSMutableArray *)fetchAllInContext:(NSManagedObjectContext *)moc;
++ (ToDoList *)newToDoListInContext:(NSManagedObjectContext *)moc;
+- (NSMutableArray *)sortedItems;
+- (BOOL)addNewToDoItemWithError:(NSError **)error;
+
+@end
+
+@interface ToDoList (CoreDataGeneratedAccessors)
+
+- (void)addItemsObject:(ToDoItem *)value;
+- (void)removeItemsObject:(ToDoItem *)value;
+- (void)addItems:(NSSet *)values;
+- (void)removeItems:(NSSet *)values;
 
 @end

@@ -8,10 +8,10 @@
 
 #import "METableViewController.h"
 
-@class TodoList;
+@class ToDoList;
 
 @interface METodoItemViewController : METableViewController
 
-- (id)initWithTodoList:(TodoList *)todoList;
+- (id)initWithTodoList:(ToDoList *)todoList;
 
 @end

@@ -10,10 +10,12 @@
 #import "MEDataManager.h"
 #import "METableViewCell.h"
 #import "METodoItemViewController.h"
-#import "TodoList.h"
-#import "TodoItem.h"
+#import "ToDoList.h"
+#import "ToDoItem.h"
 
 @interface METodoListViewController ()
+
+@property (nonatomic, strong) NSMutableArray *allLists;
 
 @end
 
@@ -31,7 +33,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.allLists = [ToDoList fetchAllInContext:[[MEDataManager sharedManager] mainQueueManagedObjectContext]];
     [self.tableView registerClass:[METableViewCell class] forCellReuseIdentifier:[METableViewCell reuseIdentifier]];
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,43 +43,66 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [MEDataManager sharedManager].todoLists.count;
+    return self.allLists.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     METableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[METableViewCell reuseIdentifier] forIndexPath:indexPath];
-    TodoList *list = [[MEDataManager sharedManager].todoLists objectAtIndex:indexPath.row];
-    
+    ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
+    NSArray *items = [list sortedItems];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [cell.textLabel setText:list.name];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:NSLocalizedString(@"%u item(s), (%u finished)", nil),list.todoItems.count,list.finishedTodoItems.count]];
+    NSArray *completed = [items valueForKeyPath:@"isFinished == 1"];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:NSLocalizedString(@"%u item(s), (%u finished)", nil), items.count, completed.count]];
     
     return cell;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[MEDataManager sharedManager].mutableTodoLists removeObjectAtIndex:indexPath.row];
-        
+        ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
+        [self.allLists  removeObject:list];
+        [[MEDataManager sharedManager] deleteManagedObject:list];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    [[MEDataManager sharedManager].mutableTodoLists exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
-    
-    [[MEDataManager sharedManager].todoLists enumerateObjectsUsingBlock:^(TodoList *list, NSUInteger idx, BOOL *stop) {
-        [list setOrder:idx];
+    [self.allLists exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+    [[self allLists] enumerateObjectsUsingBlock:^(ToDoList *list, NSUInteger idx, BOOL *stop) {
+        list.order = idx;
     }];
+    [self saveContext];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    METodoItemViewController *viewController = [[METodoItemViewController alloc] initWithTodoList:[[MEDataManager sharedManager].todoLists objectAtIndex:indexPath.row]];
-    
+    ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
+    METodoItemViewController *viewController = [[METodoItemViewController alloc] initWithTodoList:list];        // pass in a scratch context
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (IBAction)_addItemAction:(id)sender {
-    [[MEDataManager sharedManager].mutableTodoLists addObject:[[TodoList alloc] init]];
-    
+    ToDoList *list = [ToDoList newToDoListInContext:[[MEDataManager sharedManager] mainQueueManagedObjectContext]];
+    list.order = self.allLists.count;
+    list.name = [NSString stringWithFormat:@"To Do List %d", list.order];
+    [self.allLists addObject:list];
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self saveContext];
 }
+
+#pragma mark - core data methods
+
+- (void)saveContext
+{
+    __block NSError *error;
+    NSManagedObjectContext *mainMoc = [[MEDataManager sharedManager] mainQueueManagedObjectContext];
+    [mainMoc performBlock:^{
+        [mainMoc save:&error];
+        [mainMoc.parentContext performBlockAndWait:^{
+            [mainMoc.parentContext save:&error];
+        }];
+    }];
+}
+
+
+
+
 
 @end

@@ -2,29 +2,33 @@
 //  Category.m
 //  Todo
 //
-//  Created by William Towe on 3/31/13.
+//  Created by Norm Barnard on 5/20/13.
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
 
 #import "Category.h"
+#import "MEDataManager.h"
+#import "ToDoList.h"
+
 
 @implementation Category
 
-- (id)init {
-    if (!(self = [super init]))
-        return nil;
-    
-    [self setMutableTodoItems:[NSMutableSet setWithCapacity:0]];
-    
-    return self;
+@dynamic name;
+@dynamic todoLists;
+
+
+- (NSMutableArray *)sortedLists
+{
+    NSSortDescriptor *byOrder = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
+    NSArray *results = [[self.todoLists allObjects] sortedArrayUsingDescriptors:@[byOrder]];
+    return [results mutableCopy];
 }
 
-@dynamic todoItems;
-- (NSSet *)todoItems {
-    return [self.mutableTodoItems copy];
-}
-- (void)setTodoItems:(NSSet *)todoItems {
-    [self setMutableTodoItems:[todoItems mutableCopy]];
++ (NSMutableArray *)allCategoriesInContext:(NSManagedObjectContext *)moc
+{
+    NSSortDescriptor *byName = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSArray *results = [[MEDataManager sharedManager] fetchAllInstancesOf:CoreDataEntityName.category sortDescriptors:@[byName] filteredBy:nil inContext:moc];
+    return [results mutableCopy];
 }
 
 @end

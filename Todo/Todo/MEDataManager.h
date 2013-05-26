@@ -6,14 +6,22 @@
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
+
+extern const struct CoreDataEntityName {
+	__unsafe_unretained NSString *toDoList;
+    __unsafe_unretained NSString *toDoItem;
+    __unsafe_unretained NSString *category;
+} CoreDataEntityName;
 
 @interface MEDataManager : NSObject
 
-@property (readonly,nonatomic) NSArray *todoLists;
-@property (readonly,strong,nonatomic) NSMutableArray *mutableTodoLists;
+@property (readonly, nonatomic, strong) NSManagedObjectContext *mainQueueManagedObjectContext;
+@property (readonly, nonatomic, strong) NSMutableArray *toDoLists;
 
-@property (readonly,nonatomic) NSSet *categories;
+- (NSArray *)fetchAllInstancesOf:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors filteredBy:(NSPredicate *)filter inContext:(NSManagedObjectContext *)moc;
+- (void)deleteManagedObject:(NSManagedObject *)managedObject;
 
 + (MEDataManager *)sharedManager;
 

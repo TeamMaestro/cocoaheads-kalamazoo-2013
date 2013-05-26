@@ -1,45 +1,60 @@
 //
-//  TodoList.m
+//  ToDoList.m
 //  Todo
 //
-//  Created by William Towe on 3/31/13.
+//  Created by Norm Barnard on 5/20/13.
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
 
-#import "TodoList.h"
-#import "TodoItem.h"
+#import "Category.h"
+#import "MEDataManager.h"
+#import "ToDoList.h"
+#import "ToDoItem.h"
 
-@implementation TodoList
+@implementation ToDoList
 
-- (id)init {
-    if (!(self = [super init]))
-        return nil;
-    
-    static NSInteger kCounter = 1;
-    
-    [self setName:[NSString stringWithFormat:NSLocalizedString(@"Untitled List %d", nil),kCounter++]];
-    [self setMutableTodoItems:[NSMutableArray arrayWithCapacity:0]];
-    
-    return self;
+@dynamic name;
+@dynamic order;
+@dynamic items;
+@dynamic category;
+
++ (ToDoList *)newToDoListInContext:(NSManagedObjectContext *)moc
+{
+    ToDoList *list = [NSEntityDescription insertNewObjectForEntityForName:CoreDataEntityName.toDoList inManagedObjectContext:moc];
+    return list;
 }
 
-@dynamic todoItems;
-- (NSArray *)todoItems {
-    return [self.mutableTodoItems copy];
-}
-- (void)setTodoItems:(NSArray *)todoItems {
-    [self setMutableTodoItems:[todoItems mutableCopy]];
++ (NSMutableArray *)fetchAllInContext:(NSManagedObjectContext *)moc
+{
+    NSSortDescriptor *byOrder = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
+    NSArray *results = [[MEDataManager sharedManager] fetchAllInstancesOf:CoreDataEntityName.toDoList sortDescriptors:@[byOrder] filteredBy:nil inContext:moc];
+    return [results mutableCopy];
 }
 
-- (NSArray *)finishedTodoItems {
-    NSMutableArray *retval = [NSMutableArray arrayWithCapacity:self.todoItems.count];
-    
-    for (TodoItem *item in self.todoItems) {
-        if (item.isFinished)
-            [retval addObject:item];
-    }
-    
-    return retval;
+- (NSMutableArray *)sortedItems
+{
+    NSSortDescriptor *byOrder = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
+    NSArray *results =  [[self.items allObjects] sortedArrayUsingDescriptors:@[byOrder]];
+    return [results mutableCopy];
+}
+
+- (BOOL)addNewToDoItemWithError:(NSError **)error
+{
+    ToDoItem *item = [ToDoItem createNewItemInContext:self.managedObjectContext];
+    item.order = self.items.count;
+    item.name = [NSString stringWithFormat:@"Item %d", self.items.count];
+    [self addItemsObject:item];
+    __weak ToDoList *weakSelf = self;
+    __block BOOL ok = NO;
+    [self.managedObjectContext performBlock:^{
+        ok = [weakSelf.managedObjectContext save:error];
+        if (ok) {
+            [weakSelf.managedObjectContext.parentContext performBlockAndWait:^{
+                ok = [weakSelf.managedObjectContext.parentContext save:error];
+            }];
+        }
+    }];
+    return ok;
 }
 
 @end

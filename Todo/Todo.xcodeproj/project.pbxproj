@@ -23,14 +23,15 @@
 		79742132170923980089E2E5 /* METableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79742131170923980089E2E5 /* METableViewCell.m */; };
 		797421351709242C0089E2E5 /* METodoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797421341709242C0089E2E5 /* METodoListViewController.m */; };
 		797421381709245C0089E2E5 /* METableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797421371709245C0089E2E5 /* METableViewController.m */; };
-		7974213F170925790089E2E5 /* TodoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7974213E170925790089E2E5 /* TodoList.m */; };
-		79742142170926520089E2E5 /* TodoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 79742141170926520089E2E5 /* TodoItem.m */; };
-		797421451709270F0089E2E5 /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 797421441709270F0089E2E5 /* Category.m */; };
 		79742148170927C00089E2E5 /* MEDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79742147170927BF0089E2E5 /* MEDataManager.m */; };
 		7974214A17092B7F0089E2E5 /* TodoLists.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7974214917092B7F0089E2E5 /* TodoLists.plist */; };
 		7974214D17092E7B0089E2E5 /* METodoItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7974214C17092E7B0089E2E5 /* METodoItemViewController.m */; };
+		9C28B0E51752A0B700C9D2C2 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C28B0E41752A0B700C9D2C2 /* ToDoItem.m */; };
 		9CCC0D96174AF15000F6027D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCC0D95174AF15000F6027D /* CoreData.framework */; };
 		9CCC0D99174AF19C00F6027D /* TodoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC0D97174AF19C00F6027D /* TodoModel.xcdatamodeld */; };
+		9CCC0D9C174AF41200F6027D /* ToDoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC0D9B174AF41200F6027D /* ToDoList.m */; };
+		9CCC0D9F174AF43C00F6027D /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC0D9E174AF43B00F6027D /* ToDoItem.m */; };
+		9CCC0DA2174AF49C00F6027D /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCC0DA1174AF49C00F6027D /* Category.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,19 +62,20 @@
 		797421341709242C0089E2E5 /* METodoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METodoListViewController.m; sourceTree = "<group>"; };
 		797421361709245C0089E2E5 /* METableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METableViewController.h; sourceTree = "<group>"; };
 		797421371709245C0089E2E5 /* METableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METableViewController.m; sourceTree = "<group>"; };
-		7974213D170925790089E2E5 /* TodoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoList.h; sourceTree = "<group>"; };
-		7974213E170925790089E2E5 /* TodoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoList.m; sourceTree = "<group>"; };
-		79742140170926520089E2E5 /* TodoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoItem.h; sourceTree = "<group>"; };
-		79742141170926520089E2E5 /* TodoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoItem.m; sourceTree = "<group>"; };
-		797421431709270F0089E2E5 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
-		797421441709270F0089E2E5 /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
 		79742146170927BF0089E2E5 /* MEDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDataManager.h; sourceTree = "<group>"; };
 		79742147170927BF0089E2E5 /* MEDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDataManager.m; sourceTree = "<group>"; };
 		7974214917092B7F0089E2E5 /* TodoLists.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TodoLists.plist; sourceTree = "<group>"; };
 		7974214B17092E7B0089E2E5 /* METodoItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = METodoItemViewController.h; sourceTree = "<group>"; };
 		7974214C17092E7B0089E2E5 /* METodoItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METodoItemViewController.m; sourceTree = "<group>"; };
+		9C28B0E41752A0B700C9D2C2 /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
 		9CCC0D95174AF15000F6027D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9CCC0D98174AF19C00F6027D /* TodoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodoModel.xcdatamodel; sourceTree = "<group>"; };
+		9CCC0D9A174AF41100F6027D /* ToDoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoList.h; sourceTree = "<group>"; };
+		9CCC0D9B174AF41200F6027D /* ToDoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoList.m; sourceTree = "<group>"; };
+		9CCC0D9D174AF43B00F6027D /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
+		9CCC0D9E174AF43B00F6027D /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
+		9CCC0DA0174AF49C00F6027D /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
+		9CCC0DA1174AF49C00F6027D /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,13 +184,14 @@
 		797421391709250D0089E2E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7974213D170925790089E2E5 /* TodoList.h */,
-				7974213E170925790089E2E5 /* TodoList.m */,
-				79742140170926520089E2E5 /* TodoItem.h */,
-				79742141170926520089E2E5 /* TodoItem.m */,
-				797421431709270F0089E2E5 /* Category.h */,
-				797421441709270F0089E2E5 /* Category.m */,
+				9C28B0E41752A0B700C9D2C2 /* ToDoItem.m */,
 				9CCC0D97174AF19C00F6027D /* TodoModel.xcdatamodeld */,
+				9CCC0D9A174AF41100F6027D /* ToDoList.h */,
+				9CCC0D9B174AF41200F6027D /* ToDoList.m */,
+				9CCC0D9D174AF43B00F6027D /* ToDoItem.h */,
+				9CCC0D9E174AF43B00F6027D /* ToDoItem.m */,
+				9CCC0DA0174AF49C00F6027D /* Category.h */,
+				9CCC0DA1174AF49C00F6027D /* Category.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -266,15 +269,15 @@
 				79742132170923980089E2E5 /* METableViewCell.m in Sources */,
 				797421351709242C0089E2E5 /* METodoListViewController.m in Sources */,
 				797421381709245C0089E2E5 /* METableViewController.m in Sources */,
-				7974213F170925790089E2E5 /* TodoList.m in Sources */,
-				79742142170926520089E2E5 /* TodoItem.m in Sources */,
-				797421451709270F0089E2E5 /* Category.m in Sources */,
 				79742148170927C00089E2E5 /* MEDataManager.m in Sources */,
 				7974214D17092E7B0089E2E5 /* METodoItemViewController.m in Sources */,
 				79286B01171C51AD004EF2CC /* METableViewHeaderFooterView.m in Sources */,
 				79574C9F173D65710080AE1C /* METodoItemTableHeaderView.m in Sources */,
 				79574CA2173D65E30080AE1C /* METodoItemTableFooterView.m in Sources */,
 				9CCC0D99174AF19C00F6027D /* TodoModel.xcdatamodeld in Sources */,
+				9CCC0D9C174AF41200F6027D /* ToDoList.m in Sources */,
+				9CCC0D9F174AF43C00F6027D /* ToDoItem.m in Sources */,
+				9CCC0DA2174AF49C00F6027D /* Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
