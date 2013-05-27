@@ -22,4 +22,6 @@
 
 + (ToDoItem *)createNewItemInContext:(NSManagedObjectContext *)moc;
 
+- (NSString *)priorityName;
+
 @end

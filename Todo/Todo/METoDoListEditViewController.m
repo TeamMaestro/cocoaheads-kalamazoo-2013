@@ -45,8 +45,7 @@ static NSString * const kCellId = @"cell";
     [super viewDidLoad];
     [self.navigationItem setTitle:self.list.name];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil) style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonTapped:)];
-    self.navigationItem.prompt = NSLocalizedString(@"Press \"Done\" to save, \"Back\" to cancel", nil);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonTapped:)];
     [self.categoryTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellId];
     self.nameField.text = self.list.name;
 }

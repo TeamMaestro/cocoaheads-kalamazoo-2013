@@ -26,7 +26,23 @@
     return item;
 }
 
-
+- (NSString *)priorityName
+{
+    switch (self.priority) {
+        case 0:
+            return @"Low";
+            break;
+        case 1:
+            return @"Normal";
+            break;
+        case 2:
+            return @"High";
+            break;
+        default:
+            break;
+    }
+    return @"";
+}
 
 
 @end

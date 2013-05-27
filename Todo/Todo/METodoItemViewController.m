@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
 
+#import "MEEditViewControllerProtocol.h"
 #import "METodoItemViewController.h"
+#import "METoDoItemEditViewController.h"
 #import "METableViewCell.h"
-#import "METodoItemTableHeaderView.h"
-#import "METodoItemTableFooterView.h"
 #import "MEDataManager.h"
 #import "ToDoList.h"
 #import "ToDoItem.h"
 #import "Category.h"
 
-@interface METodoItemViewController ()
+@interface METodoItemViewController () <MEEditViewControllerDelegate>
 
 @property (strong,nonatomic) ToDoList *todoList;
 
@@ -55,10 +55,12 @@
     ToDoItem *item = [self.todoList.sortedItems objectAtIndex:indexPath.row];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    [cell setAccessoryType:(item.isFinished) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     [cell.textLabel setText:item.name];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:NSLocalizedString(@"priority %d", nil),item.priority]];
-    
+    if (item.isFinished)
+        cell.detailTextLabel.text = NSLocalizedString(@"Done", nil);
+    else
+        [cell.detailTextLabel setText:[NSString stringWithFormat:NSLocalizedString(@"Priority: %@", nil),item.priorityName]];
     return cell;
 }
 
@@ -83,7 +85,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ToDoItem *item = [self.todoList.sortedItems objectAtIndex:indexPath.row];
-    NSLog(@"tapped item named: %@", item.name);
+    NSManagedObjectContext *editContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    editContext.parentContext = [[MEDataManager sharedManager] mainQueueManagedObjectContext];
+    METoDoItemEditViewController *itemEditController = [[METoDoItemEditViewController alloc] initWithItemId:item.objectID managedObjectContext:editContext];
+    itemEditController.delegate = self;
+    [self.navigationController pushViewController:itemEditController animated:YES];
 }
 
 - (IBAction)_addItemAction:(id)sender {
@@ -96,5 +102,16 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.todoList.items.count)-1 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
+- (void)editViewController:(UIViewController *)editViewController didSaveObject:(NSManagedObject *)object
+{
+    NSError *error;
+    BOOL ok = [[MEDataManager sharedManager] saveMainContextWithError:&error];
+    NSAssert1(ok, @"Unable to save item %@", error);
+    [self.tableView reloadData];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 @end
