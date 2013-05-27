@@ -31,6 +31,15 @@
     return [results mutableCopy];
 }
 
++ (NSMutableArray *)listsWithoutCategoryInContext:(NSManagedObjectContext *)moc
+{
+    NSSortDescriptor *byOrder = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
+    NSPredicate *missingCategory = [NSPredicate predicateWithFormat:@"self.category == nil"];
+    NSArray *results = [[MEDataManager sharedManager] fetchAllInstancesOf:CoreDataEntityName.toDoList sortDescriptors:@[byOrder] filteredBy:missingCategory inContext:moc];
+    return [results mutableCopy];
+}
+
+
 - (NSMutableArray *)sortedItems
 {
     NSSortDescriptor *byOrder = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];

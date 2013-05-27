@@ -69,14 +69,18 @@
         ToDoItem *item = [self.todoList.sortedItems objectAtIndex:indexPath.row];
         [self.todoList removeItemsObject:item];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [[MEDataManager sharedManager] saveMainContextWithError:nil];        
     }
 }
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     NSMutableArray *sortedItems = self.todoList.sortedItems;
-    [sortedItems exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+    ToDoItem *item = [sortedItems objectAtIndex:sourceIndexPath.row];
+    [sortedItems removeObject:item];
+    [sortedItems insertObject:item atIndex:destinationIndexPath.row];
     [sortedItems enumerateObjectsUsingBlock:^(ToDoItem *item, NSUInteger idx, BOOL *stop) {
         [item setOrder:idx];
     }];
+    [[MEDataManager sharedManager] saveMainContextWithError:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {

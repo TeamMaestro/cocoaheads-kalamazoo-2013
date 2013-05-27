@@ -19,6 +19,7 @@
 @property (nonatomic, strong) Category *category;
 
 + (NSMutableArray *)fetchAllInContext:(NSManagedObjectContext *)moc;
++ (NSMutableArray *)listsWithoutCategoryInContext:(NSManagedObjectContext *)moc;
 + (ToDoList *)newToDoListInContext:(NSManagedObjectContext *)moc;
 - (NSMutableArray *)sortedItems;
 - (BOOL)addNewToDoItemWithError:(NSError **)error;

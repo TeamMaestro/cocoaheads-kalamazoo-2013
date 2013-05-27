@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
 
+#import "Category.h"
 #import "MEEditViewControllerProtocol.h"
 #import "METoDoListEditViewController.h"
 #import "METodoListViewController.h"
@@ -15,13 +16,27 @@
 #import "ToDoList.h"
 #import "ToDoItem.h"
 
+static NSString *const kUncategorizedKey = @"";
+
 @interface METodoListViewController () <MEEditViewControllerDelegate>
 
+@property (nonatomic, strong) NSMutableArray *categorySectionNames;
+@property (nonatomic, strong) NSMutableDictionary *listsByCategory;
 @property (nonatomic, strong) NSMutableArray *allLists;
 
 @end
 
 @implementation METodoListViewController
+
+- (id)init
+{
+    self = [super init];
+    if (!self) return nil;
+    _listsByCategory = [NSMutableDictionary dictionary];
+    return  self;
+}
+
+
 
 - (NSString *)title {
     return NSLocalizedString(@"Todo Lists", nil);
@@ -35,21 +50,42 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.allLists = [ToDoList fetchAllInContext:[[MEDataManager sharedManager] mainQueueManagedObjectContext]];
     [self.tableView registerClass:[METableViewCell class] forCellReuseIdentifier:[METableViewCell reuseIdentifier]];
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    [self.listsByCategory removeAllObjects];
+    NSArray *categories = [Category allCategoriesInContext:[[MEDataManager sharedManager] mainQueueManagedObjectContext]];
+    __weak METodoListViewController *weakSelf = self;
+    [categories enumerateObjectsUsingBlock:^(Category *category, NSUInteger idx, BOOL *stop) {
+        if (category.todoLists.count > 0)
+            [weakSelf.listsByCategory setObject:category.sortedLists forKey:category.name];
+    }];
+    NSMutableArray *listSansCategory = [ToDoList listsWithoutCategoryInContext:[[MEDataManager sharedManager] mainQueueManagedObjectContext]];
+    NSArray *sortedKeys = [self.listsByCategory.allKeys sortedArrayUsingSelector:@selector(compare:)];
+    
+    self.categorySectionNames = [sortedKeys mutableCopy];
+    [self.listsByCategory setObject:listSansCategory forKey:kUncategorizedKey];
     
     [self.tableView reloadData];
 }
 
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.categorySectionNames.count + 1;      // plus 1 for uncategorized lists
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.allLists.count;
+    NSArray *lists = [self listsForSectionIndex:section];
+    return lists.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     METableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[METableViewCell reuseIdentifier] forIndexPath:indexPath];
-    ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
+    
+    ToDoList *list = [self listAtIndexPath:indexPath];
     NSArray *items = [list sortedItems];
     [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     [cell.textLabel setText:list.name];
@@ -61,25 +97,48 @@
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
-        [self.allLists  removeObject:list];
+        NSMutableArray *categoryLists = [self listsForSectionIndex:indexPath.section];
+        ToDoList *list = [self listAtIndexPath:indexPath];
+        [categoryLists removeObject:list];
         [[MEDataManager sharedManager] deleteManagedObject:list];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        if (categoryLists.count == 0 && indexPath.section < self.categorySectionNames.count) {
+            [self.categorySectionNames removeObjectAtIndex:indexPath.section];
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        else
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    return (sourceIndexPath.section != proposedDestinationIndexPath.section) ? sourceIndexPath : proposedDestinationIndexPath;
+}
+
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    [self.allLists exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
-    [[self allLists] enumerateObjectsUsingBlock:^(ToDoList *list, NSUInteger idx, BOOL *stop) {
+
+    NSMutableArray *lists = [self listsForSectionIndex:sourceIndexPath.section];
+    ToDoList *list = [lists objectAtIndex:sourceIndexPath.row];
+    [lists removeObject:list];
+    [lists insertObject:list atIndex:destinationIndexPath.row];
+    [lists enumerateObjectsUsingBlock:^(ToDoList *list, NSUInteger idx, BOOL *stop) {
         list.order = idx;
     }];
     [self saveContext];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == self.categorySectionNames.count)
+        return @"No Category";
+    return [self.categorySectionNames objectAtIndex:section];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObjectContext *scratchContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     scratchContext.parentContext = [[MEDataManager sharedManager] mainQueueManagedObjectContext];
-    ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
+    ToDoList *list = [self listAtIndexPath:indexPath];
     METoDoListEditViewController *editViewController = [[METoDoListEditViewController alloc] initWithToDoListId:list.objectID managedObjectContext:scratchContext];
     editViewController.delegate = self;
     [self.navigationController pushViewController:editViewController animated:YES];
@@ -87,19 +146,39 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
+    ToDoList *list = [self listAtIndexPath:indexPath];
     METodoItemViewController *viewController = [[METodoItemViewController alloc] initWithTodoList:list];        // pass in a scratch context
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (IBAction)_addItemAction:(id)sender {
     ToDoList *list = [ToDoList newToDoListInContext:[[MEDataManager sharedManager] mainQueueManagedObjectContext]];
-    list.order = self.allLists.count;
+    NSMutableArray *uncategorized = [self.listsByCategory objectForKey:kUncategorizedKey];
+    list.order = uncategorized.count;
     list.name = [NSString stringWithFormat:@"To Do List %d", list.order];
-    [self.allLists addObject:list];
-    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [uncategorized addObject:list];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:(uncategorized.count-1) inSection:self.categorySectionNames.count]] withRowAnimation:UITableViewRowAnimationAutomatic];
     [self saveContext];
 }
+
+- (NSMutableArray *)listsForSectionIndex:(NSInteger)section
+{
+    NSMutableArray *lists;
+    if (section == self.categorySectionNames.count) {
+        lists = [self.listsByCategory objectForKey:kUncategorizedKey];
+    } else {
+        NSString *key = [self.categorySectionNames objectAtIndex:section];
+        lists = [self.listsByCategory objectForKey:key];
+    }
+    return lists;
+}
+
+- (ToDoList *)listAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *lists = [self listsForSectionIndex:indexPath.section];
+    return [lists objectAtIndex:indexPath.row];
+}
+
 
 #pragma mark - edit view controller delegate method
 
