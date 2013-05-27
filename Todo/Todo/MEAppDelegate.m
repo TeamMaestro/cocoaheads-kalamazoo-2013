@@ -7,7 +7,7 @@
 //
 
 #import "MEAppDelegate.h"
-
+#import "MEDataManager.h"
 #import "MERootViewController.h"
 #import "METodoListViewController.h"
 
@@ -15,6 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[MEDataManager sharedManager] setupCategories];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [[MERootViewController alloc] initWithRootViewController:[[METodoListViewController alloc] init]];
     self.window.rootViewController = self.viewController;

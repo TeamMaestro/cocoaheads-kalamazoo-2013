@@ -89,8 +89,12 @@
 - (IBAction)_addItemAction:(id)sender {
     NSError *error = nil;
     BOOL ok = [self.todoList addNewToDoItemWithError:&error];
-    if (!ok)
+    if (!ok) {
         NSLog(@"could not create and add a new todo item to the list: %@", error);
+        return;
+    }
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(self.todoList.items.count)-1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

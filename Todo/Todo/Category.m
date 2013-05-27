@@ -17,6 +17,12 @@
 @dynamic todoLists;
 
 
++ (Category *)createCategoryInContext:(NSManagedObjectContext *)moc
+{
+    Category *category = [NSEntityDescription insertNewObjectForEntityForName:CoreDataEntityName.category inManagedObjectContext:moc];
+    return category;
+}
+
 - (NSMutableArray *)sortedLists
 {
     NSSortDescriptor *byOrder = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];

@@ -22,7 +22,8 @@ extern const struct CoreDataEntityName {
 
 - (NSArray *)fetchAllInstancesOf:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors filteredBy:(NSPredicate *)filter inContext:(NSManagedObjectContext *)moc;
 - (void)deleteManagedObject:(NSManagedObject *)managedObject;
-
+- (BOOL)saveMainContextWithError:(NSError **)error;
+- (void)setupCategories;
 + (MEDataManager *)sharedManager;
 
 @end

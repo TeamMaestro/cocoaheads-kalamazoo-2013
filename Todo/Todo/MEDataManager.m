@@ -57,6 +57,7 @@ const struct CoreDataEntityName CoreDataEntityName = {
     _persistentManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     _persistentManagedObjectContext.persistentStoreCoordinator = _persistentStoreCoordinator;
     
+    
     return self;
 }
 
@@ -74,6 +75,28 @@ const struct CoreDataEntityName CoreDataEntityName = {
     return staticContext;
 }
 
+- (void)setupCategories
+{
+    //
+    // Just create some categories for our demo. A view controller to handle category creation is left as an exercise
+    // for the reader.. :)
+    //
+    NSArray *categories = [Category allCategoriesInContext:_persistentManagedObjectContext];
+    if (categories.count == 0) {
+        [@[@"Inbox", @"Delegate", @"Maybe", @"Waiting For", @"Home", @"Work"] enumerateObjectsUsingBlock:^(NSString *categoryName, NSUInteger idx, BOOL *stop) {
+            Category *category = [Category createCategoryInContext:self.mainQueueManagedObjectContext];
+            category.name = categoryName;
+        }];
+        NSManagedObjectContext *moc = self.mainQueueManagedObjectContext;
+        [moc performBlockAndWait:^{
+            [moc save:nil];
+            [moc.parentContext performBlockAndWait:^{
+                [moc.parentContext save:nil];
+            }];
+        }];
+    }
+}
+
 + (MEDataManager *)sharedManager; {
     static id retval;
     static dispatch_once_t onceToken;
@@ -82,6 +105,28 @@ const struct CoreDataEntityName CoreDataEntityName = {
     });
     return retval;
 }
+
+#pragma mark - save main managed object context method
+
+- (BOOL)saveMainContextWithError:(NSError **)error
+{
+    __block BOOL ok;
+    NSManagedObjectContext *moc = [[MEDataManager sharedManager] mainQueueManagedObjectContext];
+    [moc performBlock:^{
+        ok = [moc save:error];
+        NSAssert(ok, @"Can't save list on main moc: %@", *error);
+        if (ok) {
+            [moc.parentContext performBlockAndWait:^{
+                [moc.parentContext performBlockAndWait:^{
+                    ok = [moc.parentContext save:error];
+                    NSAssert(ok, @"Can't save list on persistent moc: %@", *error);
+                }];
+            }];
+        }
+    }];
+    return ok;
+}
+
 
 #pragma mark - delete managed object methods
 

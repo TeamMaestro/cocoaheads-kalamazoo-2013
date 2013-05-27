@@ -18,6 +18,7 @@
 
 - (NSMutableArray *)sortedLists;
 + (NSMutableArray *)allCategoriesInContext:(NSManagedObjectContext *)moc;
++ (Category *)createCategoryInContext:(NSManagedObjectContext *)moc;
 
 @end
 

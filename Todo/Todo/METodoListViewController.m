@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
 
+#import "MEEditViewControllerProtocol.h"
+#import "METoDoListEditViewController.h"
 #import "METodoListViewController.h"
 #import "MEDataManager.h"
 #import "METableViewCell.h"
@@ -13,7 +15,7 @@
 #import "ToDoList.h"
 #import "ToDoItem.h"
 
-@interface METodoListViewController ()
+@interface METodoListViewController () <MEEditViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *allLists;
 
@@ -49,9 +51,10 @@
     METableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[METableViewCell reuseIdentifier] forIndexPath:indexPath];
     ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
     NSArray *items = [list sortedItems];
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     [cell.textLabel setText:list.name];
-    NSArray *completed = [items valueForKeyPath:@"isFinished == 1"];
+    NSPredicate *whereFinished = [NSPredicate predicateWithFormat:@"isFinished == %d", YES];
+    NSArray *completed = [items filteredArrayUsingPredicate:whereFinished];
     [cell.detailTextLabel setText:[NSString stringWithFormat:NSLocalizedString(@"%u item(s), (%u finished)", nil), items.count, completed.count]];
     
     return cell;
@@ -72,6 +75,17 @@
     [self saveContext];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    NSManagedObjectContext *scratchContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    scratchContext.parentContext = [[MEDataManager sharedManager] mainQueueManagedObjectContext];
+    ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
+    METoDoListEditViewController *editViewController = [[METoDoListEditViewController alloc] initWithToDoListId:list.objectID managedObjectContext:scratchContext];
+    editViewController.delegate = self;
+    [self.navigationController pushViewController:editViewController animated:YES];
+}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ToDoList *list = [self.allLists objectAtIndex:indexPath.row];
     METodoItemViewController *viewController = [[METodoItemViewController alloc] initWithTodoList:list];        // pass in a scratch context
@@ -87,22 +101,23 @@
     [self saveContext];
 }
 
+#pragma mark - edit view controller delegate method
+
+- (void)editViewController:(UIViewController *)editViewController didSaveObject:(ToDoList *)list
+{
+    [self saveContext];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - core data methods
 
 - (void)saveContext
 {
-    __block NSError *error;
-    NSManagedObjectContext *mainMoc = [[MEDataManager sharedManager] mainQueueManagedObjectContext];
-    [mainMoc performBlock:^{
-        [mainMoc save:&error];
-        [mainMoc.parentContext performBlockAndWait:^{
-            [mainMoc.parentContext save:&error];
-        }];
-    }];
+    NSError *error;
+    BOOL ok =  [[MEDataManager sharedManager] saveMainContextWithError:&error];
+    if (!ok)
+        NSLog(@"Unable to save main moc: %@", error);
+
 }
-
-
-
-
 
 @end

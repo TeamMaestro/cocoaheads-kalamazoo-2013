@@ -46,7 +46,7 @@
     [self addItemsObject:item];
     __weak ToDoList *weakSelf = self;
     __block BOOL ok = NO;
-    [self.managedObjectContext performBlock:^{
+    [self.managedObjectContext performBlockAndWait:^{
         ok = [weakSelf.managedObjectContext save:error];
         if (ok) {
             [weakSelf.managedObjectContext.parentContext performBlockAndWait:^{
