@@ -72,6 +72,7 @@
         [alert show];
         return;        
     }
+    self.item.name = self.nameField.text;
     __weak METoDoItemEditViewController *weakSelf = self;
     [self.managedObjectContext performBlockAndWait:^{
         [weakSelf.managedObjectContext save:nil];
