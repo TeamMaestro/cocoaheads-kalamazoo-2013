@@ -5,6 +5,8 @@ Core Data Presentation Outline
 1. What Is Core Data?
    - From Apple: "...provides generalized and automated solutions to common tasks associated with object life-cycle
    and object graph managment, including persistence"
+   - Define what an object graph is: 
+	 - Pictures: show a object graph, and a data entity diagram
    - Some Features
 	   - Undo/Redo support for your objects
 	   - Automatically maintains relationships between objects
@@ -18,16 +20,20 @@ Core Data Presentation Outline
 2. Main Parts/Classes of Core Data
    - Managed Object Model
 	 - Defines your object graph, entities, their properties, and relationships to other entities, i.e. a Schema
-	 - Entities are NSManagedObjects and it's subclasses
+	 - Entities are NSManagedObjects and subclasses thereof.
+	 - .xcdatamodel - not necessarily a class, but a bundle of files, that can be versioned.
+	 - Never programatically manipulate this. If you use stored fetch requests and properties, you get them from here.
   - Managed Object Context
 	- In-memory work space for your managed objects (think "scratchpad")
 	- You can have more than one and edits to managed objects can be performed independently
-	- Contexts can be nested (parent->child relationships)
+	- Contexts can be nested (parent->child relationships)  
 	  - to isolate changes
+	  - call this out that the demo illustrates parent/child MOCs
    - Persistent Store Coordinator
 	 - Sits between managed object contexts and persistent stores
 	 - A single NSPersistentStoreCoordinator can cooridnate with multiple stores and contexts
 	 - Can only support one managed object model
+	 - Not something a programmer typically messes with directly.
    - Persistent Store (NSPersistentStore)
 	 - Abstract class which handles the reads and writes to the physical store
 	 - You can't directly sublass NSPersistentStore, but you can subclass NSAtomicStore and NSIncrementalStore
@@ -51,6 +57,8 @@ Core Data Presentation Outline
 4. Modifying Will's tableview demo to use core data
    -  NSManagedObject subclasses
 	 - you don't have to subclass, you can use NSManagedObject like a dictionary
+	   - You can use NSManagedObject to inspect you properties and relationship
+	   - NSEntityDescription
 	 - the hard way
 	 - using mogenerator 
    - use child MOC for edit controllers
