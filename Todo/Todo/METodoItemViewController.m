@@ -52,6 +52,13 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     METableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[METableViewCell reuseIdentifier] forIndexPath:indexPath];
+    
+    //
+    // get our list of items from our ToDoList in a sorted order. since relationships on NSManagedObject are by default, NSSets,
+    // we can't gurantee any return order if we enumerate on the set itsself, we'd likely get a different order each time we
+    // load up the app. for a large set of objects, we would probably want to sort once, but since our list of todo items will
+    // be small (and since this is a demo) we'll just sort it on demand
+    //
     ToDoItem *item = [self.todoList.sortedItems objectAtIndex:indexPath.row];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -67,8 +74,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         ToDoItem *item = [self.todoList.sortedItems objectAtIndex:indexPath.row];
+        //
+        // delete the selected item
+        //
         [self.todoList removeItemsObject:item];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        //
+        // save on our main queue context so the edit sticks
+        //
         [[MEDataManager sharedManager] saveMainContextWithError:nil];        
     }
 }
@@ -77,6 +90,10 @@
     ToDoItem *item = [sortedItems objectAtIndex:sourceIndexPath.row];
     [sortedItems removeObject:item];
     [sortedItems insertObject:item atIndex:destinationIndexPath.row];
+    //
+    // the user changed the order of their todo items, we need to update our sort order property and save all the todo items
+    // in this list
+    //
     [sortedItems enumerateObjectsUsingBlock:^(ToDoItem *item, NSUInteger idx, BOOL *stop) {
         [item setOrder:idx];
     }];
@@ -89,6 +106,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ToDoItem *item = [self.todoList.sortedItems objectAtIndex:indexPath.row];
+    
+    // Create a scratch pad managed object context. If the user elects not to save their edits to the ToDoItem properties,
+    // we simply throw this context away..
+    //
     NSManagedObjectContext *editContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     editContext.parentContext = [[MEDataManager sharedManager] mainQueueManagedObjectContext];
     METoDoItemEditViewController *itemEditController = [[METoDoItemEditViewController alloc] initWithItemId:item.objectID managedObjectContext:editContext];
@@ -97,6 +118,9 @@
 }
 
 - (IBAction)_addItemAction:(id)sender {
+//
+// the user wants to add a new item to this list, call our method to create and add a new item
+//
     NSError *error = nil;
     BOOL ok = [self.todoList addNewToDoItemWithError:&error];
     if (!ok) {

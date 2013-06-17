@@ -3,8 +3,7 @@
 //  Todo
 //
 //  Created by Norm Barnard on 5/20/13.
-//  Copyright (c) 2013 William Towe. All rights reserved.
-//
+//  Copyright (c) 2013 Norm Barnard. All rights reserved.
 
 #import "MEDataManager.h"
 #import "ToDoItem.h"

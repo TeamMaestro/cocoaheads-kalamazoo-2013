@@ -20,7 +20,7 @@
     </entity>
     <elements>
         <element name="Category" positionX="207" positionY="207" width="128" height="75"/>
-        <element name="ToDoItem" positionX="115" positionY="369" width="128" height="135"/>
+        <element name="ToDoItem" positionX="187" positionY="351" width="128" height="135"/>
         <element name="ToDoList" positionX="-9" positionY="192" width="128" height="105"/>
     </elements>
 </model>

@@ -18,6 +18,10 @@
 
 static NSString *const kUncategorizedKey = @"";
 
+//
+// custom protocol that all view controllers that are parents of edit view controllers should
+// conform to
+//
 @interface METodoListViewController () <MEEditViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *categorySectionNames;
@@ -35,8 +39,6 @@ static NSString *const kUncategorizedKey = @"";
     _listsByCategory = [NSMutableDictionary dictionary];
     return  self;
 }
-
-
 
 - (NSString *)title {
     return NSLocalizedString(@"Todo Lists", nil);
@@ -57,12 +59,19 @@ static NSString *const kUncategorizedKey = @"";
     [super viewWillAppear:animated];
 
     [self.listsByCategory removeAllObjects];
+    //
+    // retrieve out list of categories. these will be used as the table headings for our to do lists.
+    // a category contains a one-to-many relationship on ToDoLists
+    // 
     NSArray *categories = [Category allCategoriesInContext:[[MEDataManager sharedManager] mainQueueManagedObjectContext]];
     __weak METodoListViewController *weakSelf = self;
     [categories enumerateObjectsUsingBlock:^(Category *category, NSUInteger idx, BOOL *stop) {
         if (category.todoLists.count > 0)
             [weakSelf.listsByCategory setObject:category.sortedLists forKey:category.name];
     }];
+    //
+    // a ToDoList can exist without beloning to a Category, so we'll fetch those lists separately, as they will not be faulted on a Category
+    //
     NSMutableArray *listSansCategory = [ToDoList listsWithoutCategoryInContext:[[MEDataManager sharedManager] mainQueueManagedObjectContext]];
     NSArray *sortedKeys = [self.listsByCategory.allKeys sortedArrayUsingSelector:@selector(compare:)];
     
@@ -136,6 +145,9 @@ static NSString *const kUncategorizedKey = @"";
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
+    // Create a scratch pad managed object context. If the user elects not to save their edits to the ToDoList properties,
+    // we simply throw this context away..
+    //
     NSManagedObjectContext *scratchContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     scratchContext.parentContext = [[MEDataManager sharedManager] mainQueueManagedObjectContext];
     ToDoList *list = [self listAtIndexPath:indexPath];
@@ -147,7 +159,7 @@ static NSString *const kUncategorizedKey = @"";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ToDoList *list = [self listAtIndexPath:indexPath];
-    METodoItemViewController *viewController = [[METodoItemViewController alloc] initWithTodoList:list];        // pass in a scratch context
+    METodoItemViewController *viewController = [[METodoItemViewController alloc] initWithTodoList:list];        
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

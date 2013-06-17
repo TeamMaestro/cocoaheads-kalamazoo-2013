@@ -2,8 +2,8 @@
 //  MEDataManager.m
 //  Todo
 //
-//  Created by William Towe on 3/31/13.
-//  Copyright (c) 2013 William Towe. All rights reserved.
+//  Created by Norm Barnard on 3/31/13.
+//  Copyright (c) 2013 Norm Barnard. All rights reserved.
 //
 
 #import "MEDataManager.h"
@@ -26,13 +26,30 @@ const struct CoreDataEntityName CoreDataEntityName = {
 
 @implementation MEDataManager
 
+
++ (MEDataManager *)sharedManager
+//
+// implementations should call this method instead of init as this is class is meant to be a singleton instance
+//
+{
+    static id retval;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        retval = [[[self class] alloc] init];
+    });
+    return retval;
+}
+
 - (id)init {
+    
     if (!(self = [super init]))
         return nil;
-
+    
     // Load up our managed object model. This is the file that's we created with the data model editor
     NSManagedObjectModel *mom = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"TodoModel" withExtension:@"momd"]];
     NSParameterAssert(mom != nil);
+    
+    
     
     // Our persistent store coordinator sits between our persisten stores (the files where the data is written) and our object contexts (scratchpad areas)
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
@@ -42,7 +59,7 @@ const struct CoreDataEntityName CoreDataEntityName = {
     
     NSDictionary *options = @{ NSMigratePersistentStoresAutomaticallyOption : @(YES),    // automatically migrate store changes if our model has changed.
                                NSInferMappingModelAutomaticallyOption : @(YES)           // try to figure out how to map our old store to our new store, if possible
-    };
+                               };
     NSError *error;
     NSPersistentStore *store = [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error];
     if (!store) {
@@ -52,11 +69,10 @@ const struct CoreDataEntityName CoreDataEntityName = {
     
     //
     // Create an NSManagedObjectContext that has it's own processing queue so writes can happen off the main thread, keeping our UI responsive.
-    // our UI context will be a child of this context.
+    // our UI context will be a child of this context and will have the NSMainQueueConcurrencyType concurrency model
     //
     _persistentManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     _persistentManagedObjectContext.persistentStoreCoordinator = _persistentStoreCoordinator;
-    
     
     return self;
 }
@@ -97,14 +113,6 @@ const struct CoreDataEntityName CoreDataEntityName = {
     }
 }
 
-+ (MEDataManager *)sharedManager; {
-    static id retval;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        retval = [[[self class] alloc] init];
-    });
-    return retval;
-}
 
 #pragma mark - save main managed object context method
 

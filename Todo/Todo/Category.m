@@ -19,12 +19,20 @@
 
 + (Category *)createCategoryInContext:(NSManagedObjectContext *)moc
 {
+    //
+    // this is how you create a new object and insert it into your object graph. note that the created object has not
+    // been faulted (written to storage) at this point
+    //
     Category *category = [NSEntityDescription insertNewObjectForEntityForName:CoreDataEntityName.category inManagedObjectContext:moc];
     return category;
 }
 
 - (NSMutableArray *)sortedLists
 {
+    //
+    // by default, to-many relationships are NSSet collections, and as a result are unordered. to have a consistent ordering of our
+    // todo items, we retrieve all our objects into an array, and return a sorted array.
+    //    
     NSSortDescriptor *byOrder = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
     NSArray *results = [[self.todoLists allObjects] sortedArrayUsingDescriptors:@[byOrder]];
     return [results mutableCopy];

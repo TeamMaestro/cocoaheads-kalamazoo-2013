@@ -16,6 +16,8 @@ Core Data Presentation Outline
    - Different persistent types (binary, xml, sqllite, in-memory ability to make custom) 
 	- ios does not allow the xml store type
    - It's not a database, not a good option if you need to do databasey type of things (update large datasets 100000 for example)
+   - It's not an ORM, for instance, you can't use it to map to and model an existing store.
+   - It's not thread safe
    
 2. Main Parts/Classes of Core Data
    - Managed Object Model
@@ -60,7 +62,10 @@ Core Data Presentation Outline
 	   - You can use NSManagedObject to inspect you properties and relationship
 	   - NSEntityDescription
 	 - the hard way
-	 - using mogenerator 
+	 - using mogenerator
+  - NSManagedObjectID
+	- core data's unique identifier for managed objects
+	- can be safely used between NSManagedObjectContexts
    - use child MOC for edit controllers
    - deleting entities
    - saving entities   
@@ -76,7 +81,7 @@ Core Data Presentation Outline
   - MainQueue & Private Queue concurrency
 	- performBlock: & performBlockAndWait:
 	
-6. Questions & Troll Stomping
+6. Questions & Answers
 
 
 	

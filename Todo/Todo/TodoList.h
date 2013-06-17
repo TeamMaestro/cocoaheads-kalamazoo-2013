@@ -5,6 +5,9 @@
 //  Created by Norm Barnard on 5/20/13.
 //  Copyright (c) 2013 William Towe. All rights reserved.
 //
+//
+// ToDoList NSManagedObject subclass
+//
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>

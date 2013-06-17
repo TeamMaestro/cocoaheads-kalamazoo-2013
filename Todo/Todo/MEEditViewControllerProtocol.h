@@ -12,7 +12,9 @@
 @protocol MEEditViewControllerDelegate <NSObject>
 
 @optional
+// called when the users requested that their edits be saved
 - (void)editViewController:(UIViewController *)editViewController didSaveObject:(NSManagedObject *)object;
+// called otherwise
 - (void)editViewController:(UIViewController *)editViewController didCancelSaveForObject:(NSManagedObject *)object;
 
 @end

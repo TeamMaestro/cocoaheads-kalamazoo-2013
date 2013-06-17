@@ -29,6 +29,10 @@ static NSString * const kCellId = @"cell";
     self = [super init];
     if (!self) return nil;
     
+    //
+    // we will fetch the list we want to edit by it's NSObjectID using the scratchpad context that was passed in, that way,
+    // any changes to the ToDoList NSManagedObject subclass are contained within this context alone.
+    //
     _managedObjectContext = managedObjectContext;
     _list = (ToDoList *)[managedObjectContext objectWithID:listID];
     _categories = [Category allCategoriesInContext:_managedObjectContext];
@@ -57,6 +61,12 @@ static NSString * const kCellId = @"cell";
         [alert show];
         return;
     }
+    //
+    // the user wishes to save their edits, so we must save our changes here, and inform our caller that
+    // it should save on it's NSManagedObjectContext. our calling view controller contains the reference to
+    // our parent NSManagedObjectContext.  We could save on the parent here, but it makes for a cleaner API
+    // if our child view controlers only know about the NSManagedObjectContext they received.
+    //
     self.list.name = self.nameField.text;
     __weak METoDoListEditViewController *weakSelf = self;
     [self.managedObjectContext performBlockAndWait:^{

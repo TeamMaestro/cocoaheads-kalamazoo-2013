@@ -2,8 +2,11 @@
 //  MEDataManager.h
 //  Todo
 //
-//  Created by William Towe on 3/31/13.
-//  Copyright (c) 2013 William Towe. All rights reserved.
+//  Created by Norm Barnard on 3/31/13.
+//  Copyright (c) 2013 Norm Barnard. All rights reserved.
+//
+//
+// File to initialize our core data stack and set up our category demos
 //
 
 #import <CoreData/CoreData.h>
