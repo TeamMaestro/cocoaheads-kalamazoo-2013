@@ -1,4 +1,6 @@
-kzoo-cocoaheads-2013
-====================
+CocoaPods
+=========
 
-Private repository for the Maestro-run CocoaHeads code and presentation notes
+This presenation's slides are available on Speaker Deck: [Introduction to CocoaPods](https://speakerdeck.com/shekibobo/introduction-to-cocoapods).
+
+
