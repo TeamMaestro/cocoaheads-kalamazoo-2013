@@ -7,6 +7,7 @@
 //
 
 #import "MEAppDelegate.h"
+#import "MEMapViewController.h"
 
 @implementation MEAppDelegate
 
@@ -14,7 +15,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self.window setRootViewController:[[MEMapViewController alloc] initWithNibName:nil bundle:nil]];
     [self.window makeKeyAndVisible];
     return YES;
 }

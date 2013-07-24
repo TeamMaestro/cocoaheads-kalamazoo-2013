@@ -16,6 +16,10 @@
 		961C7019179EB9680095178A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 961C7018179EB9680095178A /* Default.png */; };
 		961C701B179EB9680095178A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 961C701A179EB9680095178A /* Default@2x.png */; };
 		961C701D179EB9680095178A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 961C701C179EB9680095178A /* Default-568h@2x.png */; };
+		9636964017A0048C006FF697 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9636963E17A0048C006FF697 /* CoreLocation.framework */; };
+		9636964117A0048C006FF697 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9636963F17A0048C006FF697 /* MapKit.framework */; };
+		9636964417A004ED006FF697 /* MEBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636964317A004ED006FF697 /* MEBaseViewController.m */; };
+		9636964917A0054A006FF697 /* MEMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636964817A0054A006FF697 /* MEMapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,12 @@
 		961C7018179EB9680095178A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		961C701A179EB9680095178A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		961C701C179EB9680095178A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9636963E17A0048C006FF697 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9636963F17A0048C006FF697 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9636964217A004ED006FF697 /* MEBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEBaseViewController.h; sourceTree = "<group>"; };
+		9636964317A004ED006FF697 /* MEBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEBaseViewController.m; sourceTree = "<group>"; };
+		9636964717A0054A006FF697 /* MEMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEMapViewController.h; sourceTree = "<group>"; };
+		9636964817A0054A006FF697 /* MEMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEMapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9636964017A0048C006FF697 /* CoreLocation.framework in Frameworks */,
+				9636964117A0048C006FF697 /* MapKit.framework in Frameworks */,
 				961C7007179EB9680095178A /* UIKit.framework in Frameworks */,
 				961C7009179EB9680095178A /* Foundation.framework in Frameworks */,
 				961C700B179EB9680095178A /* CoreGraphics.framework in Frameworks */,
@@ -51,6 +63,8 @@
 		961C6FFA179EB9680095178A = {
 			isa = PBXGroup;
 			children = (
+				9636963E17A0048C006FF697 /* CoreLocation.framework */,
+				9636963F17A0048C006FF697 /* MapKit.framework */,
 				961C700C179EB9680095178A /* MapKit */,
 				961C7005179EB9680095178A /* Frameworks */,
 				961C7004179EB9680095178A /* Products */,
@@ -78,8 +92,10 @@
 		961C700C179EB9680095178A /* MapKit */ = {
 			isa = PBXGroup;
 			children = (
+				9636964517A004F8006FF697 /* Assets */,
 				961C7015179EB9680095178A /* MEAppDelegate.h */,
 				961C7016179EB9680095178A /* MEAppDelegate.m */,
+				9636964617A004FE006FF697 /* Controllers */,
 				961C700D179EB9680095178A /* Supporting Files */,
 			);
 			path = MapKit;
@@ -97,6 +113,24 @@
 				961C701C179EB9680095178A /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9636964517A004F8006FF697 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		9636964617A004FE006FF697 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9636964217A004ED006FF697 /* MEBaseViewController.h */,
+				9636964317A004ED006FF697 /* MEBaseViewController.m */,
+				9636964717A0054A006FF697 /* MEMapViewController.h */,
+				9636964817A0054A006FF697 /* MEMapViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +201,8 @@
 			files = (
 				961C7013179EB9680095178A /* main.m in Sources */,
 				961C7017179EB9680095178A /* MEAppDelegate.m in Sources */,
+				9636964417A004ED006FF697 /* MEBaseViewController.m in Sources */,
+				9636964917A0054A006FF697 /* MEMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,10 +279,12 @@
 		961C7021179EB9680095178A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MapKit/MapKit-Prefix.pch";
 				INFOPLIST_FILE = "MapKit/MapKit-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -281,6 +319,7 @@
 				961C7022179EB9680095178A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

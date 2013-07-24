@@ -18,14 +18,27 @@ August 2013 — MapKit
 	* Local search
 	* 3rd party APIs (foursquare, yelp, Google Maps)
 * Overlays, paths, routes
-* Geofencing (used for background notifications...hack)
+* Geofencing (used for background notifications hack — significant-change location service)
 * Routing apps
 
 *note to self — figure out where the magic happens and exploit it*
 
+####APIs####
+* MKMapView
+* MKMapViewDelegate Protocol
+* MKAnnotationView
+* MKAnnotation Protocol
+* MKPointAnnotation
+* MKLocalSearch
+* MKLocalSearchRequest
+* MKLocalSearchResponse
+* MKPlacemark
+* MKUserLocation
+* CLGeocoder
+* CLLocationManager
+* CLLocationManagerDelegate Protocol
+
 ---
 
 ###Sample Code###
-* Get user current location
-* Search location & add annotation
-* 
+User MKLocalSearch to find restaurants within 1.6 km radius. Show my current location and drop a custom pin/annotation for each restaurant in search results. Toggle map/list view and list restaurants by distance from current location, closest restaurants first.
