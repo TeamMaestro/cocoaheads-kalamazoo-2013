@@ -7,6 +7,7 @@
 //
 
 #import "MEAppDelegate.h"
+#import "MEDirectionsViewController.h"
 #import "MEMapViewController.h"
 
 @implementation MEAppDelegate
@@ -16,6 +17,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+//    [self.window setRootViewController:[[MEDirectionsViewController alloc] initWithNibName:nil bundle:nil]];
     [self.window setRootViewController:[[MEMapViewController alloc] initWithNibName:nil bundle:nil]];
     [self.window makeKeyAndVisible];
     return YES;

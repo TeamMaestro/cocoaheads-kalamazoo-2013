@@ -20,6 +20,8 @@
 		9636964117A0048C006FF697 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9636963F17A0048C006FF697 /* MapKit.framework */; };
 		9636964417A004ED006FF697 /* MEBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636964317A004ED006FF697 /* MEBaseViewController.m */; };
 		9636964917A0054A006FF697 /* MEMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9636964817A0054A006FF697 /* MEMapViewController.m */; };
+		96AD0EA717BD742A003F95DB /* MEDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AD0EA617BD742A003F95DB /* MEDirectionsViewController.m */; };
+		96AD0EA917BD7618003F95DB /* MEDirectionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96AD0EA817BD7618003F95DB /* MEDirectionsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,9 @@
 		9636964317A004ED006FF697 /* MEBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEBaseViewController.m; sourceTree = "<group>"; };
 		9636964717A0054A006FF697 /* MEMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEMapViewController.h; sourceTree = "<group>"; };
 		9636964817A0054A006FF697 /* MEMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEMapViewController.m; sourceTree = "<group>"; };
+		96AD0EA517BD742A003F95DB /* MEDirectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEDirectionsViewController.h; sourceTree = "<group>"; };
+		96AD0EA617BD742A003F95DB /* MEDirectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEDirectionsViewController.m; sourceTree = "<group>"; };
+		96AD0EA817BD7618003F95DB /* MEDirectionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEDirectionsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +134,9 @@
 				9636964317A004ED006FF697 /* MEBaseViewController.m */,
 				9636964717A0054A006FF697 /* MEMapViewController.h */,
 				9636964817A0054A006FF697 /* MEMapViewController.m */,
+				96AD0EA517BD742A003F95DB /* MEDirectionsViewController.h */,
+				96AD0EA617BD742A003F95DB /* MEDirectionsViewController.m */,
+				96AD0EA817BD7618003F95DB /* MEDirectionsView.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -189,6 +197,7 @@
 				961C7019179EB9680095178A /* Default.png in Resources */,
 				961C701B179EB9680095178A /* Default@2x.png in Resources */,
 				961C701D179EB9680095178A /* Default-568h@2x.png in Resources */,
+				96AD0EA917BD7618003F95DB /* MEDirectionsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +212,7 @@
 				961C7017179EB9680095178A /* MEAppDelegate.m in Sources */,
 				9636964417A004ED006FF697 /* MEBaseViewController.m in Sources */,
 				9636964917A0054A006FF697 /* MEMapViewController.m in Sources */,
+				96AD0EA717BD742A003F95DB /* MEDirectionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

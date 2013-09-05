@@ -37,19 +37,13 @@
     [self.mapView setShowsUserLocation:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - MKMapViewDelegate
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 2000, 2000) animated:YES];
     
     MKLocalSearchRequest *searchRequest = [[MKLocalSearchRequest alloc] init];
-    [searchRequest setNaturalLanguageQuery:@"pub        "];
+    [searchRequest setNaturalLanguageQuery:@"pub"];
     [searchRequest setRegion:MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, 3500, 3500)];
     
     MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:searchRequest];
@@ -68,6 +62,8 @@
             NSLog(@"no results");
         }
     }];
+    
+    [self.mapView setShowsUserLocation:NO];
 }
 
 @end
