@@ -1,0 +1,15 @@
+//
+//  MEAppDelegate.h
+//  Animation
+//
+//  Created by William Towe on 9/8/13.
+//  Copyright (c) 2013 Maestro. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface MEAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+
+@end
