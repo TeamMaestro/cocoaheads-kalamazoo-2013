@@ -7,6 +7,7 @@
 //
 
 #import "MESystemAnimationsViewController.h"
+#import "MESystemAnimationsContainerViewController.h"
 
 @interface MESystemAnimationsViewController ()
 
@@ -16,6 +17,15 @@
 
 - (NSString *)title {
     return NSLocalizedString(@"System", nil);
+}
+
+- (id)init {
+    if (!(self = [super init]))
+        return nil;
+    
+    [self setViewControllers:@[[[MESystemAnimationsContainerViewController alloc] init]]];
+    
+    return self;
 }
 
 @end

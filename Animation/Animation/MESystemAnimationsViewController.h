@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MESystemAnimationsViewController : UIViewController
+@interface MESystemAnimationsViewController : UINavigationController
 
 @end
