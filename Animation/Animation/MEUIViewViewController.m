@@ -175,6 +175,11 @@ static NSTimeInterval const kAnimationDuration = 0.3;
             [self.animationView setTransform:transform];
             [self.animationView setFrame:frame];
             
+            for (UIView *subview in self.view.subviews) {
+                if ([subview isKindOfClass:[UIButton class]])
+                    [(UIButton *)subview setSelected:NO];
+            }
+            
             [subscriber sendCompleted];
             
             return nil;

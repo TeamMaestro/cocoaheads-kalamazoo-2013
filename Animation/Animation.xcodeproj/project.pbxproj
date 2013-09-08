@@ -22,6 +22,10 @@
 		79C2C4AB17DC70FC0003A60B /* MECALayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C2C4AA17DC70FC0003A60B /* MECALayerViewController.m */; };
 		79C2C4AE17DC71080003A60B /* MECustomAnimationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C2C4AD17DC71080003A60B /* MECustomAnimationsViewController.m */; };
 		79C2C4B217DC74270003A60B /* MEUIViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C2C4B017DC74270003A60B /* MEUIViewViewController.xib */; };
+		79C2C4B517DC84500003A60B /* MECALayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C2C4B317DC84500003A60B /* MECALayerViewController.xib */; };
+		79C2C4B717DC853D0003A60B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C2C4B617DC853D0003A60B /* QuartzCore.framework */; };
+		79C2C4B917DC93460003A60B /* lolcatsdotcompromdate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79C2C4B817DC93460003A60B /* lolcatsdotcompromdate.jpg */; };
+		79C2C4BB17DC93E30003A60B /* lolcatsdotcomlikemyself.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79C2C4BA17DC93E30003A60B /* lolcatsdotcomlikemyself.jpg */; };
 		B04BE6DD3C66482B8FE13CBD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFB38DBC50349AE9DD7A3C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +54,10 @@
 		79C2C4AC17DC71080003A60B /* MECustomAnimationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MECustomAnimationsViewController.h; sourceTree = "<group>"; };
 		79C2C4AD17DC71080003A60B /* MECustomAnimationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MECustomAnimationsViewController.m; sourceTree = "<group>"; };
 		79C2C4B117DC74270003A60B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MEUIViewViewController.xib; sourceTree = "<group>"; };
+		79C2C4B417DC84500003A60B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MECALayerViewController.xib; sourceTree = "<group>"; };
+		79C2C4B617DC853D0003A60B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		79C2C4B817DC93460003A60B /* lolcatsdotcompromdate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lolcatsdotcompromdate.jpg; sourceTree = "<group>"; };
+		79C2C4BA17DC93E30003A60B /* lolcatsdotcomlikemyself.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lolcatsdotcomlikemyself.jpg; sourceTree = "<group>"; };
 		9DFB38DBC50349AE9DD7A3C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA37563517A648439FC93410 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79C2C4B717DC853D0003A60B /* QuartzCore.framework in Frameworks */,
 				79C2C48417DC70390003A60B /* UIKit.framework in Frameworks */,
 				79C2C48617DC70390003A60B /* Foundation.framework in Frameworks */,
 				79C2C48817DC70390003A60B /* CoreGraphics.framework in Frameworks */,
@@ -90,6 +99,7 @@
 		79C2C48217DC70390003A60B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79C2C4B617DC853D0003A60B /* QuartzCore.framework */,
 				79C2C48317DC70390003A60B /* UIKit.framework */,
 				79C2C48517DC70390003A60B /* Foundation.framework */,
 				79C2C48717DC70390003A60B /* CoreGraphics.framework */,
@@ -122,6 +132,8 @@
 		79C2C48A17DC70390003A60B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				79C2C4BA17DC93E30003A60B /* lolcatsdotcomlikemyself.jpg */,
+				79C2C4B817DC93460003A60B /* lolcatsdotcompromdate.jpg */,
 				79C2C48B17DC70390003A60B /* Animation-Info.plist */,
 				79C2C48C17DC70390003A60B /* InfoPlist.strings */,
 				79C2C48F17DC70390003A60B /* main.m */,
@@ -137,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				79C2C4B017DC74270003A60B /* MEUIViewViewController.xib */,
+				79C2C4B317DC84500003A60B /* MECALayerViewController.xib */,
 			);
 			name = Xibs;
 			path = en.lproj;
@@ -201,6 +214,9 @@
 				79C2C49817DC70390003A60B /* Default@2x.png in Resources */,
 				79C2C49A17DC70390003A60B /* Default-568h@2x.png in Resources */,
 				79C2C4B217DC74270003A60B /* MEUIViewViewController.xib in Resources */,
+				79C2C4B517DC84500003A60B /* MECALayerViewController.xib in Resources */,
+				79C2C4B917DC93460003A60B /* lolcatsdotcompromdate.jpg in Resources */,
+				79C2C4BB17DC93E30003A60B /* lolcatsdotcomlikemyself.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +287,14 @@
 				79C2C4B117DC74270003A60B /* en */,
 			);
 			name = MEUIViewViewController.xib;
+			sourceTree = "<group>";
+		};
+		79C2C4B317DC84500003A60B /* MECALayerViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79C2C4B417DC84500003A60B /* en */,
+			);
+			name = MECALayerViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
