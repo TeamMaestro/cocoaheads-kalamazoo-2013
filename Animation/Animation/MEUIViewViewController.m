@@ -8,8 +8,6 @@
 
 #import "MEUIViewViewController.h"
 
-#define MEWrappedValue(value, min, max) ((value > max) ? min : value)
-
 typedef NS_ENUM(NSInteger, TransformButtonTag) {
     TransformButtonTagNone,
     TransformButtonTagScale,
