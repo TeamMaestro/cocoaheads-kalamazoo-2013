@@ -104,7 +104,11 @@ static CFTimeInterval const kAnimationDuration = 0.3;
             
             [button setSelected:!button.isSelected];
             
-            [self _animateValueWithKeyPath:@"contents" from:self.animationView.layer.contents to:(__bridge id)((button.isSelected) ? [UIImage imageNamed:@"lolcatsdotcomlikemyself.jpg"].CGImage : [UIImage imageNamed:@"lolcatsdotcompromdate.jpg"].CGImage) duration:kAnimationDuration completion:^{
+            [self _animateValueWithKeyPath:@"contents"
+                                      from:self.animationView.layer.contents
+                                        to:(__bridge id)((button.isSelected) ? [UIImage imageNamed:@"lolcatsdotcomlikemyself.jpg"].CGImage : [UIImage imageNamed:@"lolcatsdotcompromdate.jpg"].CGImage)
+                                  duration:kAnimationDuration
+                                completion:^{
                 [subscriber sendCompleted];
             }];
             
@@ -118,7 +122,11 @@ static CFTimeInterval const kAnimationDuration = 0.3;
             
             [button setSelected:!button.isSelected];
             
-            [self _animateValueWithKeyPath:@"contentsRect" from:[NSValue valueWithCGRect:self.animationView.layer.contentsRect] to:(button.isSelected) ? [NSValue valueWithCGRect:CGRectMake(0, 0, 0.5, 0.5)] : [NSValue valueWithCGRect:contentsRect] duration:kAnimationDuration completion:^{
+            [self _animateValueWithKeyPath:@"contentsRect"
+                                      from:[NSValue valueWithCGRect:self.animationView.layer.contentsRect]
+                                        to:(button.isSelected) ? [NSValue valueWithCGRect:CGRectMake(0, 0, 0.5, 0.5)] : [NSValue valueWithCGRect:contentsRect]
+                                  duration:kAnimationDuration
+                                completion:^{
                 [subscriber sendCompleted];
             }];
             
