@@ -7,6 +7,7 @@
 //
 
 #import "MECALayerViewController.h"
+#import "MEVideoView.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -94,6 +95,10 @@ static CFTimeInterval const kAnimationDuration = 0.3;
     [sublayer2 sizeToFit];
     [sublayer2 setFrame:CGRectMake(CGRectGetMaxX(self.animationView.bounds) - CGRectGetWidth(sublayer2.frame) - 20, CGRectGetMaxY(self.animationView.bounds) - CGRectGetHeight(sublayer2.frame) - 20, CGRectGetWidth(sublayer2.frame), CGRectGetHeight(sublayer2.frame))];
     [self.animationView addSubview:sublayer2];
+    
+    MEVideoView *sublayer3 = [[MEVideoView alloc] initWithFrame:CGRectInset(self.animationView.bounds, 50, 50)];
+    
+    [self.animationView insertSubview:sublayer3 atIndex:0];
     
     @weakify(self);
     
@@ -338,7 +343,7 @@ static CFTimeInterval const kAnimationDuration = 0.3;
                     CATransform3D transform = CATransform3DIdentity;
                     
                     transform.m34 = 0.001;
-                    transform = CATransform3DRotate(transform, -M_PI_4, 0, 1, 0);
+                    transform = CATransform3DRotate(transform, M_2_SQRTPI, 0, 1, 0);
                     
                     toValue = [NSValue valueWithCATransform3D:transform];
                 }
@@ -381,7 +386,7 @@ static CFTimeInterval const kAnimationDuration = 0.3;
                     CATransform3D transform = CATransform3DIdentity;
                     
                     transform.m34 = 0.001;
-                    transform = CATransform3DRotate(transform, -M_PI_4, 0, 1, 0);
+                    transform = CATransform3DRotate(transform, M_PI_4, 1, 0, 0);
                     
                     toValue = [NSValue valueWithCATransform3D:transform];
                 }
@@ -391,7 +396,7 @@ static CFTimeInterval const kAnimationDuration = 0.3;
                     break;
             }
             
-            [self _animateValueWithKeyPath:@"transform" from:[NSValue valueWithCATransform3D:self.animationView.layer.sublayerTransform] to:toValue duration:kAnimationDuration completion:^{
+            [self _animateValueWithKeyPath:@"transform" from:[NSValue valueWithCATransform3D:self.animationView.layer.transform] to:toValue duration:kAnimationDuration completion:^{
                 [subscriber sendCompleted];
             }];
             
@@ -414,6 +419,8 @@ static CFTimeInterval const kAnimationDuration = 0.3;
             [self.animationView.layer setShadowOpacity:shadowOpacity];
             [self.animationView.layer setShadowRadius:shadowRadius];
             [self.animationView.layer setShadowPath:shadowPath.CGPath];
+            [self.animationView.layer setSublayerTransform:sublayerTransform];
+            [self.animationView.layer setTransform:transform];
             
             for (UIView *subview in self.view.subviews) {
                 if ([subview isKindOfClass:[UIButton class]])

@@ -30,6 +30,11 @@
 		79C2C4C117DD21B50003A60B /* MESystemAnimationsContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79C2C4BF17DD21B50003A60B /* MESystemAnimationsContentViewController.xib */; };
 		79C2C4C317DD2AE40003A60B /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C2C4C217DD2AE40003A60B /* QuickLook.framework */; };
 		79C2C4C617DD33970003A60B /* MESystemAnimationsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C2C4C517DD33970003A60B /* MESystemAnimationsContainerViewController.m */; };
+		79C2C4C817DD434F0003A60B /* ed_1024_512kb.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 79C2C4C717DD434F0003A60B /* ed_1024_512kb.mp4 */; };
+		79C2C4CA17DD43A20003A60B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C2C4C917DD43A20003A60B /* AVFoundation.framework */; };
+		79C2C4CC17DD43A70003A60B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C2C4CB17DD43A70003A60B /* MobileCoreServices.framework */; };
+		79C2C4CE17DD44C10003A60B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C2C4CD17DD44C10003A60B /* CoreMedia.framework */; };
+		79C2C4D117DD45EF0003A60B /* MEVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C2C4D017DD45EF0003A60B /* MEVideoView.m */; };
 		B04BE6DD3C66482B8FE13CBD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFB38DBC50349AE9DD7A3C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +73,12 @@
 		79C2C4C217DD2AE40003A60B /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		79C2C4C417DD33970003A60B /* MESystemAnimationsContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MESystemAnimationsContainerViewController.h; sourceTree = "<group>"; };
 		79C2C4C517DD33970003A60B /* MESystemAnimationsContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MESystemAnimationsContainerViewController.m; sourceTree = "<group>"; };
+		79C2C4C717DD434F0003A60B /* ed_1024_512kb.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ed_1024_512kb.mp4; sourceTree = "<group>"; };
+		79C2C4C917DD43A20003A60B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		79C2C4CB17DD43A70003A60B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		79C2C4CD17DD44C10003A60B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		79C2C4CF17DD45EF0003A60B /* MEVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEVideoView.h; sourceTree = "<group>"; };
+		79C2C4D017DD45EF0003A60B /* MEVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEVideoView.m; sourceTree = "<group>"; };
 		9DFB38DBC50349AE9DD7A3C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA37563517A648439FC93410 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +88,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79C2C4CE17DD44C10003A60B /* CoreMedia.framework in Frameworks */,
+				79C2C4CC17DD43A70003A60B /* MobileCoreServices.framework in Frameworks */,
+				79C2C4CA17DD43A20003A60B /* AVFoundation.framework in Frameworks */,
 				79C2C4C317DD2AE40003A60B /* QuickLook.framework in Frameworks */,
 				79C2C4B717DC853D0003A60B /* QuartzCore.framework in Frameworks */,
 				79C2C48417DC70390003A60B /* UIKit.framework in Frameworks */,
@@ -110,6 +124,9 @@
 		79C2C48217DC70390003A60B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79C2C4CD17DD44C10003A60B /* CoreMedia.framework */,
+				79C2C4CB17DD43A70003A60B /* MobileCoreServices.framework */,
+				79C2C4C917DD43A20003A60B /* AVFoundation.framework */,
 				79C2C4C217DD2AE40003A60B /* QuickLook.framework */,
 				79C2C4B617DC853D0003A60B /* QuartzCore.framework */,
 				79C2C48317DC70390003A60B /* UIKit.framework */,
@@ -131,6 +148,8 @@
 				79C2C4A717DC70ED0003A60B /* MEUIViewViewController.m */,
 				79C2C4A917DC70FC0003A60B /* MECALayerViewController.h */,
 				79C2C4AA17DC70FC0003A60B /* MECALayerViewController.m */,
+				79C2C4CF17DD45EF0003A60B /* MEVideoView.h */,
+				79C2C4D017DD45EF0003A60B /* MEVideoView.m */,
 				79C2C4A317DC70A40003A60B /* MESystemAnimationsViewController.h */,
 				79C2C4A417DC70A40003A60B /* MESystemAnimationsViewController.m */,
 				79C2C4C417DD33970003A60B /* MESystemAnimationsContainerViewController.h */,
@@ -148,6 +167,7 @@
 		79C2C48A17DC70390003A60B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				79C2C4C717DD434F0003A60B /* ed_1024_512kb.mp4 */,
 				79C2C4BA17DC93E30003A60B /* lolcatsdotcomlikemyself.jpg */,
 				79C2C4B817DC93460003A60B /* lolcatsdotcompromdate.jpg */,
 				79C2C48B17DC70390003A60B /* Animation-Info.plist */,
@@ -235,6 +255,7 @@
 				79C2C4B917DC93460003A60B /* lolcatsdotcompromdate.jpg in Resources */,
 				79C2C4BB17DC93E30003A60B /* lolcatsdotcomlikemyself.jpg in Resources */,
 				79C2C4C117DD21B50003A60B /* MESystemAnimationsContentViewController.xib in Resources */,
+				79C2C4C817DD434F0003A60B /* ed_1024_512kb.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +308,7 @@
 				79C2C4AE17DC71080003A60B /* MECustomAnimationsViewController.m in Sources */,
 				79C2C4BE17DD204B0003A60B /* MESystemAnimationsContentViewController.m in Sources */,
 				79C2C4C617DD33970003A60B /* MESystemAnimationsContainerViewController.m in Sources */,
+				79C2C4D117DD45EF0003A60B /* MEVideoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -229,6 +229,7 @@ static NSTimeInterval const kAnimationDuration = 0.3;
 
 - (NSArray *)previewItems {
     return @[[[NSBundle mainBundle] URLForResource:@"lolcatsdotcomlikemyself.jpg" withExtension:nil],
+             [[NSBundle mainBundle] URLForResource:@"ed_1024_512kb.mp4" withExtension:nil],
              [[NSBundle mainBundle] URLForResource:@"lolcatsdotcompromdate.jpg" withExtension:nil]];
 }
 
