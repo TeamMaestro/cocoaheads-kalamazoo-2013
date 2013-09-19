@@ -35,6 +35,8 @@
 		79C2C4CC17DD43A70003A60B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C2C4CB17DD43A70003A60B /* MobileCoreServices.framework */; };
 		79C2C4CE17DD44C10003A60B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79C2C4CD17DD44C10003A60B /* CoreMedia.framework */; };
 		79C2C4D117DD45EF0003A60B /* MEVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C2C4D017DD45EF0003A60B /* MEVideoView.m */; };
+		79DFA5C617EB4EA700BF9E5F /* MECustomAnimationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79DFA5C417EB4EA700BF9E5F /* MECustomAnimationsViewController.xib */; };
+		79DFA5C917EB6E2900BF9E5F /* UIColor+MEExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DFA5C817EB6E2900BF9E5F /* UIColor+MEExtensions.m */; };
 		B04BE6DD3C66482B8FE13CBD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DFB38DBC50349AE9DD7A3C6 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,9 @@
 		79C2C4CD17DD44C10003A60B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		79C2C4CF17DD45EF0003A60B /* MEVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEVideoView.h; sourceTree = "<group>"; };
 		79C2C4D017DD45EF0003A60B /* MEVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEVideoView.m; sourceTree = "<group>"; };
+		79DFA5C517EB4EA700BF9E5F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MECustomAnimationsViewController.xib; sourceTree = "<group>"; };
+		79DFA5C717EB6E2900BF9E5F /* UIColor+MEExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MEExtensions.h"; sourceTree = "<group>"; };
+		79DFA5C817EB6E2900BF9E5F /* UIColor+MEExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MEExtensions.m"; sourceTree = "<group>"; };
 		9DFB38DBC50349AE9DD7A3C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA37563517A648439FC93410 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +145,8 @@
 		79C2C48917DC70390003A60B /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				79DFA5C717EB6E2900BF9E5F /* UIColor+MEExtensions.h */,
+				79DFA5C817EB6E2900BF9E5F /* UIColor+MEExtensions.m */,
 				79C2C49217DC70390003A60B /* MEAppDelegate.h */,
 				79C2C49317DC70390003A60B /* MEAppDelegate.m */,
 				79C2C4A017DC70730003A60B /* MERootViewController.h */,
@@ -187,6 +194,7 @@
 				79C2C4B017DC74270003A60B /* MEUIViewViewController.xib */,
 				79C2C4B317DC84500003A60B /* MECALayerViewController.xib */,
 				79C2C4BF17DD21B50003A60B /* MESystemAnimationsContentViewController.xib */,
+				79DFA5C417EB4EA700BF9E5F /* MECustomAnimationsViewController.xib */,
 			);
 			name = Xibs;
 			path = en.lproj;
@@ -251,6 +259,7 @@
 				79C2C49817DC70390003A60B /* Default@2x.png in Resources */,
 				79C2C49A17DC70390003A60B /* Default-568h@2x.png in Resources */,
 				79C2C4B217DC74270003A60B /* MEUIViewViewController.xib in Resources */,
+				79DFA5C617EB4EA700BF9E5F /* MECustomAnimationsViewController.xib in Resources */,
 				79C2C4B517DC84500003A60B /* MECALayerViewController.xib in Resources */,
 				79C2C4B917DC93460003A60B /* lolcatsdotcompromdate.jpg in Resources */,
 				79C2C4BB17DC93E30003A60B /* lolcatsdotcomlikemyself.jpg in Resources */,
@@ -301,6 +310,7 @@
 			files = (
 				79C2C49017DC70390003A60B /* main.m in Sources */,
 				79C2C49417DC70390003A60B /* MEAppDelegate.m in Sources */,
+				79DFA5C917EB6E2900BF9E5F /* UIColor+MEExtensions.m in Sources */,
 				79C2C4A217DC70730003A60B /* MERootViewController.m in Sources */,
 				79C2C4A517DC70A40003A60B /* MESystemAnimationsViewController.m in Sources */,
 				79C2C4A817DC70ED0003A60B /* MEUIViewViewController.m in Sources */,
@@ -345,6 +355,14 @@
 				79C2C4C017DD21B50003A60B /* en */,
 			);
 			name = MESystemAnimationsContentViewController.xib;
+			sourceTree = "<group>";
+		};
+		79DFA5C417EB4EA700BF9E5F /* MECustomAnimationsViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				79DFA5C517EB4EA700BF9E5F /* en */,
+			);
+			name = MECustomAnimationsViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

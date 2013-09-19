@@ -9,33 +9,11 @@
 #import "MESystemAnimationsContentViewController.h"
 #import "MESystemAnimationsViewController.h"
 #import "MESystemAnimationsContainerViewController.h"
+#import "UIColor+MEExtensions.h"
 
 #import <QuickLook/QuickLook.h>
 
 static NSTimeInterval const kAnimationDuration = 0.3;
-
-@interface UIColor (MEExtensions)
-+ (UIColor *)ME_colorWithHexadecimalString:(NSString *)hexadecimalString;
-@end
-
-@implementation UIColor (MEExtensions)
-+ (UIColor *)ME_colorWithHexadecimalString:(NSString *)hexadecimalString; {
-    UIColor *retval = nil;
-    uint32_t hexadecimalColor;
-    NSScanner *scanner = [NSScanner scannerWithString:hexadecimalString];
-    
-    if (![scanner scanHexInt:&hexadecimalColor])
-        return retval;
-    
-    uint8_t red = (uint8_t)(hexadecimalColor >> 16);
-    uint8_t green = (uint8_t)(hexadecimalColor >> 8);
-    uint8_t blue = (uint8_t)hexadecimalColor;
-    
-    retval = [UIColor colorWithRed:(CGFloat)red/0xff green:(CGFloat)green/0xff blue:(CGFloat)blue/0xff alpha:1.0];
-    
-    return retval;
-}
-@end
 
 @interface MERandomBackgroundColorViewController : UIViewController
 @property (strong,nonatomic) UILabel *label;
