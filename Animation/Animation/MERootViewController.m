@@ -27,7 +27,7 @@
                                [[MESystemAnimationsViewController alloc] init],
                                [[MECustomAnimationsViewController alloc] init]]];
     
-    [self setSelectedIndex:3];
+    [self setSelectedIndex:0];
     
     return self;
 }
