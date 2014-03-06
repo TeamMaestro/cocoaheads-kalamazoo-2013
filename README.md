@@ -1,7 +1,4 @@
-CocoaHeads Kalamazoo
+kzoo-cocoaheads-2013
 ====================
 
-UITableView
------------
-
-Presentation code sample and Keynote deck for the UITableView presentation from May 16, 2013.
+Private repository for the Maestro-run CocoaHeads code and presentation notes
