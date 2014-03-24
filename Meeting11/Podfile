@@ -1,0 +1,4 @@
+platform :ios, "7.0"
+
+pod "MEKit", "~> 1.0.0"
+pod "MEReactiveFoundation", "~> 1.0.0"

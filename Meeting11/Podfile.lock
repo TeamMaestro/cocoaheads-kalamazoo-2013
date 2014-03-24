@@ -1,0 +1,16 @@
+PODS:
+  - MEFoundation (1.0.5)
+  - MEKit (1.0.2):
+    - MEFoundation (~> 1.0.0)
+  - MEReactiveFoundation (1.0.2)
+
+DEPENDENCIES:
+  - MEKit (~> 1.0.0)
+  - MEReactiveFoundation (~> 1.0.0)
+
+SPEC CHECKSUMS:
+  MEFoundation: a2052d2002c159dd33f73b4e8cd3dcbed1703f15
+  MEKit: 549ad4ffe92066047da229f27a09efd97d844dbb
+  MEReactiveFoundation: 8fca6120232080a67f78954482c775220ef2a6a1
+
+COCOAPODS: 0.29.0
