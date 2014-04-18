@@ -1,7 +1,7 @@
 CocoaHeads Kalamazoo
 ====================
 
-SpriteKit
+Sprite Kit
 -----------
 
 Keynote deck for the Sprite Kit presentation from April 17, 2014.
