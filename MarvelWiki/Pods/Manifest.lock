@@ -1,0 +1,62 @@
+PODS:
+  - AFNetworking (2.2.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.2.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.4):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.4)
+  - AFNetworking/Security (2.2.4)
+  - AFNetworking/Serialization (2.2.4)
+  - AFNetworking/UIKit (2.2.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - libextobjc/EXTKeyPathCoding (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.4):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.4)
+  - MEFoundation (1.0.7)
+  - MEKit (1.0.5):
+    - MEFoundation (~> 1.0.0)
+  - MEReactiveFoundation (1.0.3)
+  - MEReactiveKit (1.0.6):
+    - libextobjc/EXTKeyPathCoding (~> 0.4.0)
+    - libextobjc/EXTScope (~> 0.4.0)
+    - MEFoundation (~> 1.0.0)
+    - MEKit (~> 1.0.0)
+    - MEReactiveFoundation (~> 1.0.0)
+    - ReactiveCocoa (~> 2.2.0)
+  - ReactiveCocoa (2.2.4):
+    - ReactiveCocoa/Core
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/Core (2.2.4):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.2.4)
+  - SDWebImage (3.6):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.6)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.2.4)
+  - MEReactiveKit (~> 1.0.6)
+  - SDWebImage (~> 3.6)
+
+SPEC CHECKSUMS:
+  AFNetworking: 01aa7c3aa9a200b94943e54072a4373f14b3d219
+  libextobjc: 2c9fc8226f0f38e562587f65172f93f0c9b4a47a
+  MEFoundation: 025774725221905fd1d28944ddd92a550f84d601
+  MEKit: 91d888dcbcfd655e05e8273fc4079dcb0b204772
+  MEReactiveFoundation: 247c6d82458f394a73cc21470ede557b65c227ec
+  MEReactiveKit: 5dda3fef145cc02d9c3b9485185f651314089fa1
+  ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
+  SDWebImage: 7eb273e54ca8a2e506ad9bd5e80c35b2a4d7c95e
+
+COCOAPODS: 0.32.1

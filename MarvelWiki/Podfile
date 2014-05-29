@@ -1,0 +1,9 @@
+platform :ios, "7.0"
+
+target "MarvelWiki" do
+
+pod 'MEReactiveKit', '~> 1.0.6'
+pod 'SDWebImage', '~> 3.6'
+pod 'AFNetworking', '~> 2.2.4'
+
+end
