@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C03D8BD194F18FF00E0435C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C03D8BC194F18FF00E0435C /* Foundation.framework */; };
+		9C03D8BF194F18FF00E0435C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C03D8BE194F18FF00E0435C /* CoreGraphics.framework */; };
+		9C03D8C1194F18FF00E0435C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C03D8C0194F18FF00E0435C /* UIKit.framework */; };
+		9C03D8C7194F18FF00E0435C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D8C5194F18FF00E0435C /* InfoPlist.strings */; };
+		9C03D8C9194F18FF00E0435C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D8C8194F18FF00E0435C /* main.m */; };
+		9C03D8CD194F18FF00E0435C /* MEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D8CC194F18FF00E0435C /* MEAppDelegate.m */; };
+		9C03D8D5194F18FF00E0435C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D8D4194F18FF00E0435C /* Images.xcassets */; };
+		9C03D8F6194F193300E0435C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C03D8BC194F18FF00E0435C /* Foundation.framework */; };
+		9C03D8F7194F193300E0435C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C03D8BE194F18FF00E0435C /* CoreGraphics.framework */; };
+		9C03D8F8194F193300E0435C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C03D8C0194F18FF00E0435C /* UIKit.framework */; };
+		9C03D8FE194F193300E0435C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D8FC194F193300E0435C /* InfoPlist.strings */; };
+		9C03D900194F193300E0435C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D8FF194F193300E0435C /* main.m */; };
+		9C03D904194F193300E0435C /* MEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D903194F193300E0435C /* MEAppDelegate.m */; };
+		9C03D90C194F193300E0435C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D90B194F193300E0435C /* Images.xcassets */; };
+		9C03D928194F1A5800E0435C /* MENALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D926194F1A5800E0435C /* MENALoginViewController.m */; };
+		9C03D929194F1A5800E0435C /* MENALoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D927194F1A5800E0435C /* MENALoginView.xib */; };
+		9C03D932194F2A8000E0435C /* MEALLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C03D930194F2A8000E0435C /* MEALLoginViewController.m */; };
+		9C03D933194F2A8000E0435C /* MEALLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C03D931194F2A8000E0435C /* MEALLoginView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9C03D8B9194F18FF00E0435C /* Meeting14-Autolayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meeting14-Autolayout.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C03D8BC194F18FF00E0435C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9C03D8BE194F18FF00E0435C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9C03D8C0194F18FF00E0435C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9C03D8C4194F18FF00E0435C /* Meeting14-Autolayout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Meeting14-Autolayout-Info.plist"; sourceTree = "<group>"; };
+		9C03D8C6194F18FF00E0435C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C03D8C8194F18FF00E0435C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C03D8CA194F18FF00E0435C /* Meeting14-Autolayout-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Meeting14-Autolayout-Prefix.pch"; sourceTree = "<group>"; };
+		9C03D8CB194F18FF00E0435C /* MEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAppDelegate.h; sourceTree = "<group>"; };
+		9C03D8CC194F18FF00E0435C /* MEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEAppDelegate.m; sourceTree = "<group>"; };
+		9C03D8D4194F18FF00E0435C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9C03D8DB194F18FF00E0435C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9C03D8F5194F193300E0435C /* BeforeAutolayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeforeAutolayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C03D8FB194F193300E0435C /* BeforeAutolayoutDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeforeAutolayoutDemo-Info.plist"; sourceTree = "<group>"; };
+		9C03D8FD194F193300E0435C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C03D8FF194F193300E0435C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C03D901194F193300E0435C /* BeforeAutolayoutDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeforeAutolayoutDemo-Prefix.pch"; sourceTree = "<group>"; };
+		9C03D902194F193300E0435C /* MEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEAppDelegate.h; sourceTree = "<group>"; };
+		9C03D903194F193300E0435C /* MEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEAppDelegate.m; sourceTree = "<group>"; };
+		9C03D90B194F193300E0435C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9C03D925194F1A5800E0435C /* MENALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MENALoginViewController.h; sourceTree = "<group>"; };
+		9C03D926194F1A5800E0435C /* MENALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MENALoginViewController.m; sourceTree = "<group>"; };
+		9C03D927194F1A5800E0435C /* MENALoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MENALoginView.xib; sourceTree = "<group>"; };
+		9C03D92F194F2A8000E0435C /* MEALLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEALLoginViewController.h; sourceTree = "<group>"; };
+		9C03D930194F2A8000E0435C /* MEALLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEALLoginViewController.m; sourceTree = "<group>"; };
+		9C03D931194F2A8000E0435C /* MEALLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MEALLoginView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C03D8B6194F18FF00E0435C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C03D8BF194F18FF00E0435C /* CoreGraphics.framework in Frameworks */,
+				9C03D8C1194F18FF00E0435C /* UIKit.framework in Frameworks */,
+				9C03D8BD194F18FF00E0435C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C03D8F2194F193300E0435C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C03D8F7194F193300E0435C /* CoreGraphics.framework in Frameworks */,
+				9C03D8F8194F193300E0435C /* UIKit.framework in Frameworks */,
+				9C03D8F6194F193300E0435C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C03D8B0194F18FF00E0435C = {
+			isa = PBXGroup;
+			children = (
+				9C03D8C2194F18FF00E0435C /* Autolayout */,
+				9C03D8F9194F193300E0435C /* BeforeAutolayoutDemo */,
+				9C03D8BB194F18FF00E0435C /* Frameworks */,
+				9C03D8BA194F18FF00E0435C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C03D8BA194F18FF00E0435C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C03D8B9194F18FF00E0435C /* Meeting14-Autolayout.app */,
+				9C03D8F5194F193300E0435C /* BeforeAutolayoutDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C03D8BB194F18FF00E0435C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C03D8BC194F18FF00E0435C /* Foundation.framework */,
+				9C03D8BE194F18FF00E0435C /* CoreGraphics.framework */,
+				9C03D8C0194F18FF00E0435C /* UIKit.framework */,
+				9C03D8DB194F18FF00E0435C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C03D8C2194F18FF00E0435C /* Autolayout */ = {
+			isa = PBXGroup;
+			children = (
+				9C03D8CB194F18FF00E0435C /* MEAppDelegate.h */,
+				9C03D8CC194F18FF00E0435C /* MEAppDelegate.m */,
+				9C03D8D4194F18FF00E0435C /* Images.xcassets */,
+				9C03D8C3194F18FF00E0435C /* Supporting Files */,
+				9C03D92F194F2A8000E0435C /* MEALLoginViewController.h */,
+				9C03D930194F2A8000E0435C /* MEALLoginViewController.m */,
+				9C03D931194F2A8000E0435C /* MEALLoginView.xib */,
+			);
+			name = Autolayout;
+			path = "Meeting14-Autolayout";
+			sourceTree = "<group>";
+		};
+		9C03D8C3194F18FF00E0435C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C03D8C4194F18FF00E0435C /* Meeting14-Autolayout-Info.plist */,
+				9C03D8C5194F18FF00E0435C /* InfoPlist.strings */,
+				9C03D8C8194F18FF00E0435C /* main.m */,
+				9C03D8CA194F18FF00E0435C /* Meeting14-Autolayout-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C03D8F9194F193300E0435C /* BeforeAutolayoutDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9C03D902194F193300E0435C /* MEAppDelegate.h */,
+				9C03D903194F193300E0435C /* MEAppDelegate.m */,
+				9C03D90B194F193300E0435C /* Images.xcassets */,
+				9C03D8FA194F193300E0435C /* Supporting Files */,
+				9C03D925194F1A5800E0435C /* MENALoginViewController.h */,
+				9C03D926194F1A5800E0435C /* MENALoginViewController.m */,
+				9C03D927194F1A5800E0435C /* MENALoginView.xib */,
+			);
+			path = BeforeAutolayoutDemo;
+			sourceTree = "<group>";
+		};
+		9C03D8FA194F193300E0435C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C03D8FB194F193300E0435C /* BeforeAutolayoutDemo-Info.plist */,
+				9C03D8FC194F193300E0435C /* InfoPlist.strings */,
+				9C03D8FF194F193300E0435C /* main.m */,
+				9C03D901194F193300E0435C /* BeforeAutolayoutDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C03D8B8194F18FF00E0435C /* AutolayoutDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C03D8EB194F18FF00E0435C /* Build configuration list for PBXNativeTarget "AutolayoutDemo" */;
+			buildPhases = (
+				9C03D8B5194F18FF00E0435C /* Sources */,
+				9C03D8B6194F18FF00E0435C /* Frameworks */,
+				9C03D8B7194F18FF00E0435C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutolayoutDemo;
+			productName = "Meeting14-Autolayout";
+			productReference = 9C03D8B9194F18FF00E0435C /* Meeting14-Autolayout.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9C03D8F4194F193300E0435C /* BeforeAutolayoutDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C03D91F194F193300E0435C /* Build configuration list for PBXNativeTarget "BeforeAutolayoutDemo" */;
+			buildPhases = (
+				9C03D8F1194F193300E0435C /* Sources */,
+				9C03D8F2194F193300E0435C /* Frameworks */,
+				9C03D8F3194F193300E0435C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeforeAutolayoutDemo;
+			productName = BeforeAutolayoutDemo;
+			productReference = 9C03D8F5194F193300E0435C /* BeforeAutolayoutDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C03D8B1194F18FF00E0435C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ME;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Maestro;
+			};
+			buildConfigurationList = 9C03D8B4194F18FF00E0435C /* Build configuration list for PBXProject "Meeting14-Autolayout" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9C03D8B0194F18FF00E0435C;
+			productRefGroup = 9C03D8BA194F18FF00E0435C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C03D8B8194F18FF00E0435C /* AutolayoutDemo */,
+				9C03D8F4194F193300E0435C /* BeforeAutolayoutDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C03D8B7194F18FF00E0435C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C03D8D5194F18FF00E0435C /* Images.xcassets in Resources */,
+				9C03D8C7194F18FF00E0435C /* InfoPlist.strings in Resources */,
+				9C03D933194F2A8000E0435C /* MEALLoginView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C03D8F3194F193300E0435C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C03D90C194F193300E0435C /* Images.xcassets in Resources */,
+				9C03D8FE194F193300E0435C /* InfoPlist.strings in Resources */,
+				9C03D929194F1A5800E0435C /* MENALoginView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C03D8B5194F18FF00E0435C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C03D8CD194F18FF00E0435C /* MEAppDelegate.m in Sources */,
+				9C03D8C9194F18FF00E0435C /* main.m in Sources */,
+				9C03D932194F2A8000E0435C /* MEALLoginViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C03D8F1194F193300E0435C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C03D928194F1A5800E0435C /* MENALoginViewController.m in Sources */,
+				9C03D904194F193300E0435C /* MEAppDelegate.m in Sources */,
+				9C03D900194F193300E0435C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9C03D8C5194F18FF00E0435C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C03D8C6194F18FF00E0435C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C03D8FC194F193300E0435C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C03D8FD194F193300E0435C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C03D8E9194F18FF00E0435C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9C03D8EA194F18FF00E0435C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9C03D8EC194F18FF00E0435C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Meeting14-Autolayout/Meeting14-Autolayout-Prefix.pch";
+				INFOPLIST_FILE = "Meeting14-Autolayout/Meeting14-Autolayout-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9C03D8ED194F18FF00E0435C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Meeting14-Autolayout/Meeting14-Autolayout-Prefix.pch";
+				INFOPLIST_FILE = "Meeting14-Autolayout/Meeting14-Autolayout-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9C03D920194F193300E0435C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeforeAutolayoutDemo/BeforeAutolayoutDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "BeforeAutolayoutDemo/BeforeAutolayoutDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9C03D921194F193300E0435C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BeforeAutolayoutDemo/BeforeAutolayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "BeforeAutolayoutDemo/BeforeAutolayoutDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C03D8B4194F18FF00E0435C /* Build configuration list for PBXProject "Meeting14-Autolayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C03D8E9194F18FF00E0435C /* Debug */,
+				9C03D8EA194F18FF00E0435C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C03D8EB194F18FF00E0435C /* Build configuration list for PBXNativeTarget "AutolayoutDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C03D8EC194F18FF00E0435C /* Debug */,
+				9C03D8ED194F18FF00E0435C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9C03D91F194F193300E0435C /* Build configuration list for PBXNativeTarget "BeforeAutolayoutDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C03D920194F193300E0435C /* Debug */,
+				9C03D921194F193300E0435C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C03D8B1194F18FF00E0435C /* Project object */;
+}
