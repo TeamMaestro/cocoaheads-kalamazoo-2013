@@ -1,7 +1,7 @@
 CocoaHeads Kalamazoo
 ====================
 
-UITableView
+Autolayout
 -----------
 
-Presentation code sample and Keynote deck for the UITableView presentation from May 16, 2013.
+Presentation code sample and Keynote deck for the Auto layout presentation on June 20, 2014
