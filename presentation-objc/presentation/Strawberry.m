@@ -17,7 +17,7 @@
 
 @implementation Strawberry
 
-- (int)getExternalSeedDensity
+- (int)externalSeedDensity
 {
     return self.externalSeedDenisity;
 }

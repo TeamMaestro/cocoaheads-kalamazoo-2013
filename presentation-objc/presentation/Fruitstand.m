@@ -9,6 +9,12 @@
 #import "Fruitstand.h"
 #import "Fruit.h"
 
+@interface Fruitstand ()
+
+@property (strong,nonatomic) NSMutableDictionary *fruitBoxes;
+
+@end
+
 @implementation Fruitstand
 
 // Override the initializer so we can allocate some space for our collections
@@ -23,12 +29,12 @@
     return self;
 }
 
-- (void)put:(Fruit *)fruit inBox:(NSString *)destinationBox
+- (void)putFruit:(Fruit *)fruit inBox:(NSString *)destinationBox
 {
     // make sure space was allocated to hold the array of fruits
     if (!self.fruitBoxes[destinationBox])
     {
-        self.fruitBoxes[destinationBox] = [(NSMutableArray *)[NSMutableArray alloc] init];
+        self.fruitBoxes[destinationBox] = [[NSMutableArray alloc] init];
     }
     NSMutableArray *box = self.fruitBoxes[destinationBox];
     [box addObject:fruit];

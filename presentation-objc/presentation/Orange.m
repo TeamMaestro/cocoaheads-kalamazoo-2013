@@ -8,24 +8,7 @@
 
 #import "Orange.h"
 
-@interface Orange ()
 
-@property (nonatomic) NSString *rindSmoothness;
-
-@end
-
-
-@implementation Orange {
-}
-
-- (NSString *)getRindSmoothness
-{
-    return self.rindSmoothness;
-}
-
-- (void)setRindSmoothness:(NSString *)smoothness
-{
-    [self.rindSmoothness initWithString:smoothness];
-}
+@implementation Orange
 
 @end

@@ -10,7 +10,6 @@
 
 @interface Orange : Fruit
 
-- (NSString *)getRindSmoothness;
-- (void)setRindSmoothness:(NSString *)smoothness;
+@property (nonatomic) NSString *rindSmoothness;
 
 @end

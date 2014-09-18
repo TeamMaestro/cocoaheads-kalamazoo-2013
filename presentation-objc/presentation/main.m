@@ -76,10 +76,10 @@ void setUpFruitstand()
     [stand.operators addObject:@"George"];
     
     // Put a piece of fruit in each of the boxes
-    [stand put:orange inBox:@"oranges"];
-    [stand put:strawberry inBox:@"strawberries"];
-    [stand put:banana inBox:@"banana"];
-    [stand put:grape inBox:@"grapes"];
+    [stand putFruit:orange inBox:@"oranges"];
+    [stand putFruit:strawberry inBox:@"strawberries"];
+    [stand putFruit:banana inBox:@"banana"];
+    [stand putFruit:grape inBox:@"grapes"];
 
     NSLog(@"\n\nWho is working the stand ?\n\n");
 
@@ -105,25 +105,25 @@ void setUpFruitstand()
                 Orange *orange = [[Orange alloc] init];
                 [orange setRindSmoothness:@"rough"];
                 [orange ripen:(int)arc4random_uniform(10)];
-                [stand put:orange inBox:name];
+                [stand putFruit:orange inBox:name];
             } else if ([name isEqualToString:@"strawberries"])
             {
                 Strawberry *berry = [[Strawberry alloc] init];
                 [berry setExternalSeedDensity:(int)arc4random_uniform(5) + 1];
                 [berry ripen:(int)arc4random_uniform(10)];
-                [stand put:berry inBox:name];
+                [stand putFruit:berry inBox:name];
             } else if ([name isEqualToString:@"banana"])
             {
                 Banana *banana = [[Banana alloc] init];
                 banana.peelThickness = arc4random_uniform(5) + 1;
                 [banana ripen:(int)arc4random_uniform(10)];
-                [stand put:banana inBox:name];
+                [stand putFruit:banana inBox:name];
             } else if ([name isEqualToString:@"grapes"])
             {
                 Grape *grape = [[Grape alloc] init];
                 grape.seedless = YES;
                 [grape ripen:(int)arc4random_uniform(10)];
-                [stand put:grape inBox:name];
+                [stand putFruit:grape inBox:name];
             }
             
         }

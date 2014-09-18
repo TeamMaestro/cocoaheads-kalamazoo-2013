@@ -10,7 +10,7 @@
 
 @interface Strawberry : Fruit
 
-- (int)getExternalSeedDensity;
+- (int)externalSeedDensity;
 - (void)setExternalSeedDensity:(int)density;
 
 @end

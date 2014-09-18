@@ -11,10 +11,9 @@
 
 @interface Fruitstand : NSObject
 
-@property NSMutableArray *operators;
-@property NSMutableDictionary *fruitBoxes;
+@property (strong,nonatomic) NSMutableArray *operators;
 
-- (void)put:(Fruit *)fruit inBox:(NSString *)destinationBox;
+- (void)putFruit:(Fruit *)fruit inBox:(NSString *)destinationBox;
 
 - (void)printOperators;
 - (void)printInventory;
