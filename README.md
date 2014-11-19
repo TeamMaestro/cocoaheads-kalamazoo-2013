@@ -1,15 +1,20 @@
 CocoaHeads Kalamazoo
 ====================
 
-Objective-C Basics
+Local Storage
 -----------
 
-Presentation code sample projects and Keynote deck for Objective-C Basics presentation from September 18, 2014.
+Presentation code sample projects and Keynote deck for Local Storage presentation from November 20, 2014.
 
-Lots of people are familiar with imperative languages like Java and PHP.
+Many types of mobile applications benefit from being able to storage data local to the data.
 
-We take a very cursory look at Objective-C.  The Java code is a fairly direct port.
+Reaching out across the network is slow compared to referencing data on the device.
 
-presentation-objc : An Xcode project with the Objective-C version of the sample project
+There are also times when we need to hold data for local use later on, or for transmission to the network.
 
-presentation-java : A NetBeans project with the Java version of the sample project
+
+Two projects will be presented:
+
+ios : An iOS project demonstrating how to use CoreData
+
+android : An Android project demonstrating how to use SQLite
