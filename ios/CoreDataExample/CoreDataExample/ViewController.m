@@ -38,9 +38,10 @@
     [super viewDidLoad];
     
     [self setWordPool:@[@"England", @"Dartmouth", @"CS65", @"is", @"the", @"best", @"coolest", @"place", @"in", @"the", @"universe!"]];
-    [self setDataSource:@[]];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    [self _refreshDataSource];
 }
 
 #pragma mark - UITableViewDelegateDataSource Methods
