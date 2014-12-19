@@ -1,7 +1,6 @@
-CocoaHeads Kalamazoo
-====================
 
-UITableView
------------
+## Fun With Swift
+#### Meeting 20
 
-Presentation code sample and Keynote deck for the UITableView presentation from May 16, 2013.
+Source code for the "Fun With Swift" cocoa heads presentation on Dec 18, 2014.
+
